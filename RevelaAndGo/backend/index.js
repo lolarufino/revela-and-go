@@ -17,9 +17,11 @@ server.use(express.json());
 const userRouter = require('./src/routes/userRouter');
 const labRouter = require('./src/routes/labRouter');
 const cartRouter = require('./src/routes/cartRouter');
+const serviceRouter = require('./src/routes/serviceRouter');
 
 server.use('/api/user', userRouter);
 server.use('/api/lab', labRouter);
 server.use('/api/cart', cartRouter);
+server.use('/api/service', serviceRouter);
 
 server.listen(port, () => debug(`Server is running on ${chalk.magenta(`http://localhost:${port}`)}`));
