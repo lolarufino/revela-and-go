@@ -15,7 +15,9 @@ server.use(morgan('dev'));
 server.use(express.json());
 
 const userRouter = require('./src/routes/userRouter');
+const labRouter = require('./src/routes/labRouter');
 
 server.use('/api/user', userRouter);
+server.use('/api/lab', labRouter);
 
 server.listen(port, () => debug(`Server is running on ${chalk.magenta(`http://localhost:${port}`)}`));
