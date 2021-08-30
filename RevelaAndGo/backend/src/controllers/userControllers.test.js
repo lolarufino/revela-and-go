@@ -37,7 +37,11 @@ describe('Given a getUserById function', () => {
   describe('When is triggered', () => {
     describe('And it is resolved', () => {
       test('Then a send must be called', async () => {
-        User.findById.mockResolvedValue({});
+        User.findById.mockReturnValue({
+          populate: jest.fn().mockReturnValue({
+            populate: jest.fn().mockResolvedValue({})
+          })
+        });
         await controller.getUserById(req, res);
         expect(res.send).toHaveBeenCalled();
       });
