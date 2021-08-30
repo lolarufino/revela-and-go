@@ -8,6 +8,8 @@ const cors = require('cors');
 const server = express();
 const port = process.env.PORT || 5000;
 
+require('./src/config/moongoseConfig');
+
 server.use(cors());
 server.use(morgan('dev'));
 server.use(express.json());
