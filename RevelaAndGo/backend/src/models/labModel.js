@@ -4,7 +4,7 @@ const labSchema = new Schema({
   name: String,
   address: String,
   contact: Number,
-  image: { type: String, default: 'https://i.ibb.co/3pN6HCG/pexels-cottonbro-3585011.jpg' },
+  image: { type: String, default: 'https://i.ibb.co/QQM3QTz/nophotoavailablelab.png' },
   services: [Schema.Types.Mixed],
   baseRate: Number
 });
