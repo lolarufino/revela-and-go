@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 const createUser = async ({ body }, res) => {
   try {
     const newUser = await User.create(body);
-    res.json(newUser);
+    res.send(newUser);
   } catch (error) {
     res.status(500);
     res.send(error);
@@ -13,7 +13,7 @@ const createUser = async ({ body }, res) => {
 const getUserById = async ({ params: { userId } }, res) => {
   try {
     const user = await User.findById(userId);
-    res.json(user);
+    res.send(user);
   } catch (error) {
     res.status(500);
     res.send(error);
@@ -23,7 +23,7 @@ const getUserById = async ({ params: { userId } }, res) => {
 const deleteById = async ({ params: { userId } }, res) => {
   try {
     const deletedUser = await User.findByIdAndDelete(userId);
-    res.json(deletedUser);
+    res.send(deletedUser);
   } catch (error) {
     res.status(500);
     res.send(error);
@@ -42,7 +42,7 @@ const updateUser = async (req, res) => {
         useFindAndModify: false
       }
     );
-    res.json(updatedUser);
+    res.send(updatedUser);
   } catch (error) {
     res.status(500);
     res.send(error);
