@@ -20,10 +20,10 @@ describe('Given a getAllLabs function', () => {
       });
     });
     describe('And is rejected', () => {
-      test('Then a status must be called', async () => {
+      test('Then a status must be called with 500', async () => {
         Lab.find.mockRejectedValue({});
         await controllers.getAllLabs(req, res);
-        expect(res.status).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(500);
       });
     });
   });
@@ -43,10 +43,10 @@ describe('Given a getLabById function', () => {
       });
     });
     describe('And is rejected', () => {
-      test('Then a send must be called', async () => {
+      test('Then a send must be called with 500', async () => {
         Lab.findById.mockRejectedValue({});
         await controllers.getLabById(req, res);
-        expect(res.status).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(500);
       });
     });
   });

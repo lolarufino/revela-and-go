@@ -20,10 +20,10 @@ describe('Given a createUser function', () => {
       });
     });
     describe('And it is rejected', () => {
-      test('Then a status must be called', async () => {
+      test('Then a status must be called with 500', async () => {
         User.create.mockRejectedValue({});
         await controller.createUser(req, res);
-        expect(res.status).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(500);
       });
     });
   });
@@ -47,10 +47,10 @@ describe('Given a getUserById function', () => {
       });
     });
     describe('And it is rejected', () => {
-      test('Then a status must be called', async () => {
+      test('Then a status must be called with 500', async () => {
         User.findById.mockRejectedValue({});
         await controller.getUserById(req, res);
-        expect(res.status).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(500);
       });
     });
   });
@@ -70,10 +70,10 @@ describe('Given a deleteById function', () => {
       });
     });
     describe('And it is rejected', () => {
-      test('Then a status must be called', async () => {
+      test('Then a status must be called with 500', async () => {
         User.findByIdAndDelete.mockRejectedValue({});
         await controller.deleteById(req, res);
-        expect(res.status).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(500);
       });
     });
   });
@@ -93,10 +93,10 @@ describe('Given a updateUser function', () => {
       });
     });
     describe('And it is rejected', () => {
-      test('Then a status must be called', async () => {
+      test('Then a status must be called with 500', async () => {
         User.findByIdAndUpdate.mockRejectedValue({});
         await controller.updateUser(req, res);
-        expect(res.status).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(500);
       });
     });
   });
