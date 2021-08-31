@@ -6,7 +6,7 @@ const createCart = async ({ body }, res) => {
     const cart = await Cart.create(body);
     const newCart = await Cart.findById(cart._id)
       .populate({ path: 'user', select: ['name'] })
-      .populate({ path: 'services', select: ['filmType', 'palette', 'scan', 'printed', 'rollBack'] });
+      .populate('services');
     res.send(newCart);
   } catch (error) {
     res.status(500);
@@ -18,7 +18,7 @@ const getCartById = async ({ params: { cartId } }, res) => {
   try {
     const cart = await Cart.findById(cartId)
       .populate({ path: 'user', select: ['name'] })
-      .populate({ path: 'services', select: ['filmType', 'palette', 'scan', 'printed', 'rollBack'] });
+      .populate('services');
     res.send(cart);
   } catch (error) {
     res.status(500);
@@ -32,7 +32,7 @@ const updateCartById = async (req, res) => {
   try {
     const updatedCart = await Cart.findByIdAndUpdate(cartId, body, { new: true })
       .populate({ path: 'user', select: ['name'] })
-      .populate({ path: 'services', select: ['filmType', 'palette', 'scan', 'printed', 'rollBack'] });
+      .populate('services');
     res.send(updatedCart);
   } catch (error) {
     res.status(500);

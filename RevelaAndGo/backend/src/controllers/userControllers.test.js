@@ -25,6 +25,11 @@ describe('Given a createUser function', () => {
         await controller.createUser(req, res);
         expect(res.status).toHaveBeenCalledWith(500);
       });
+      test('Then send is called with an error', async () => {
+        User.create.mockRejectedValue(new Error('error'));
+        await controller.createUser(req, res);
+        expect(res.send.mock.calls[0][0].message).toBe('error');
+      });
     });
   });
 });
@@ -75,6 +80,11 @@ describe('Given a deleteById function', () => {
         await controller.deleteById(req, res);
         expect(res.status).toHaveBeenCalledWith(500);
       });
+      test('Then send is called with an error', async () => {
+        User.findByIdAndDelete.mockRejectedValue(new Error('error'));
+        await controller.deleteById(req, res);
+        expect(res.send.mock.calls[0][0].message).toBe('error');
+      });
     });
   });
 });
@@ -97,6 +107,11 @@ describe('Given a updateUser function', () => {
         User.findByIdAndUpdate.mockRejectedValue({});
         await controller.updateUser(req, res);
         expect(res.status).toHaveBeenCalledWith(500);
+      });
+      test('Then send is called with an error', async () => {
+        User.findByIdAndUpdate.mockRejectedValue(new Error('error'));
+        await controller.updateUser(req, res);
+        expect(res.send.mock.calls[0][0].message).toBe('error');
       });
     });
   });

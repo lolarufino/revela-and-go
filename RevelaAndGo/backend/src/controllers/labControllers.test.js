@@ -25,6 +25,11 @@ describe('Given a getAllLabs function', () => {
         await controllers.getAllLabs(req, res);
         expect(res.status).toHaveBeenCalledWith(500);
       });
+      test('Then send is called with an error', async () => {
+        Lab.find.mockRejectedValue(new Error('error'));
+        await controllers.getAllLabs(req, res);
+        expect(res.send.mock.calls[0][0].message).toBe('error');
+      });
     });
   });
 });
@@ -47,6 +52,11 @@ describe('Given a getLabById function', () => {
         Lab.findById.mockRejectedValue({});
         await controllers.getLabById(req, res);
         expect(res.status).toHaveBeenCalledWith(500);
+      });
+      test('Then send is called with an error', async () => {
+        Lab.findById.mockRejectedValue(new Error('error'));
+        await controllers.getLabById(req, res);
+        expect(res.send.mock.calls[0][0].message).toBe('error');
       });
     });
   });
