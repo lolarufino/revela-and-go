@@ -36,7 +36,7 @@ describe('Given a getAllLabs function', () => {
 
 describe('Given a getLabById function', () => {
   beforeEach(() => {
-    req = { labId: null };
+    req = { params: { labId: null } };
     res = { send: jest.fn(), status: jest.fn() };
   });
   describe('When is triggered', () => {
