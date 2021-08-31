@@ -8,4 +8,8 @@ const userSchema = new Schema({
   favoriteLabs: [{ type: Schema.Types.ObjectId, ref: 'Lab' }]
 });
 
+userSchema.methods.isValidPassword = function isValidPassword(password) {
+  return password === this.password;
+};
+
 module.exports = model('User', userSchema);
