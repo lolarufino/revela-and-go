@@ -1,9 +1,4 @@
-/* eslint-disable no-underscore-dangle */
-const jwt = require('jsonwebtoken');
-const passport = require('passport');
 const User = require('../models/userModel');
-
-const refreshTokens = [];
 
 const createUser = async ({ body }, res) => {
   try {
@@ -55,56 +50,9 @@ const updateUser = async (req, res) => {
   }
 };
 
-const userRegistration = (req, res) => {
-  res.send({
-    user: req.user,
-    message: 'Register works'
-  });
-};
-
-const userLogin = async (req, res, next) => {
-  passport.authenticate(
-    'login',
-    async (err, user) => {
-      try {
-        if (err || !user) {
-          const error = new Error('An error occurred.');
-          return next(error);
-        }
-        return req.login(
-          user,
-          { session: false },
-          async (error) => {
-            if (error) return next(error);
-
-            const data = { _id: user._id, email: user.email };
-
-            const token = jwt.sign(
-              { user: data },
-              process.env.JWT_SECRET,
-              { expriesIn: '1m' }
-            );
-            const refreshToken = jwt.sign(
-              { user: data },
-              process.env.JWT_TOKEN
-            );
-            refreshTokens.push(refreshToken);
-
-            return res.json({ token, refreshToken });
-          }
-        );
-      } catch (error) {
-        return next(error);
-      }
-    }
-  )(res, res, next);
-};
-
 module.exports = {
   createUser,
   getUserById,
   deleteById,
-  updateUser,
-  userRegistration,
-  userLogin
+  updateUser
 };

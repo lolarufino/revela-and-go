@@ -16,13 +16,13 @@ server.use(morgan('dev'));
 server.use(express.json());
 
 const authRouter = require('./src/routes/authRouter');
-const userRouter = require('./src/routes/userRouter');
+const userProtectedRouter = require('./src/routes/userProtectedRouter');
 const labRouter = require('./src/routes/labRouter');
 const cartRouter = require('./src/routes/cartRouter');
 const serviceRouter = require('./src/routes/serviceRouter');
 
 server.use('/api', authRouter);
-server.use('/api/user', userRouter);
+server.use('/api/user', userProtectedRouter);
 server.use('/api/lab', labRouter);
 server.use('/api/cart', cartRouter);
 server.use('/api/service', serviceRouter);
