@@ -4,7 +4,7 @@ const serviceModel = new Schema({
   filmType: Number,
   palette: String,
   scan: Boolean,
-  printed: Boolean,
+  print: Boolean,
   rollBack: Boolean
 });
 

@@ -5,7 +5,12 @@ const userSchema = new Schema({
   email: String,
   password: String,
   profilePicture: { type: String, default: 'https://i.ibb.co/5v7x2jW/nophotoavailable.png' },
-  favoriteLabs: [{ type: Schema.Types.ObjectId, ref: 'Lab' }]
+  favoriteLabs: [{ type: Schema.Types.ObjectId, ref: 'Lab' }],
+  cart: { type: Schema.Types.ObjectId, ref: 'Cart' }
 });
+
+userSchema.methods.isValidPassword = function isValidPassword(password) {
+  return password === this.password;
+};
 
 module.exports = model('User', userSchema);

@@ -19,10 +19,15 @@ describe('Given a createService function', () => {
       });
     });
     describe('And it is rejected', () => {
-      test('Then a status must be called', async () => {
+      test('Then a status must be called with 500', async () => {
         Service.create.mockRejectedValue({});
         await controller.createService(req, res);
-        expect(res.status).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(500);
+      });
+      test('Then send is called with an error', async () => {
+        Service.create.mockRejectedValue(new Error('error'));
+        await controller.createService(req, res);
+        expect(res.send.mock.calls[0][0].message).toBe('error');
       });
     });
   });

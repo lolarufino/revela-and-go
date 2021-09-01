@@ -10,7 +10,7 @@ const getAllLabs = async ({ query }, res) => {
   }
 };
 
-const getLabById = async ({ labId }, res) => {
+const getLabById = async ({ params: { labId } }, res) => {
   try {
     const lab = await Lab.findById(labId);
     res.send(lab);
