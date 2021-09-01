@@ -6,16 +6,16 @@ const {
   updateUser
 } = require('../controllers/userControllers');
 
-const userProtectedRouter = new Router();
+const userRouter = new Router();
 
-userProtectedRouter
+userRouter
   .route('/')
   .post(createUser);
 
-userProtectedRouter
+userRouter
   .route('/:userId')
   .get(getUserById)
   .delete(deleteById)
   .put(updateUser);
 
-module.exports = userProtectedRouter;
+module.exports = userRouter;
