@@ -4,6 +4,7 @@ const debug = require('debug')('server');
 const chalk = require('chalk');
 const morgan = require('morgan');
 const cors = require('cors');
+const passport = require('passport');
 
 const server = express();
 const port = process.env.PORT || 5000;
@@ -22,7 +23,7 @@ const cartRouter = require('./src/routes/cartRouter');
 const serviceRouter = require('./src/routes/serviceRouter');
 
 server.use('/api', authRouter);
-server.use('/api/user', userRouter);
+server.use('/api/user', passport.authenticate('jwt', { session: false }), userRouter);
 server.use('/api/lab', labRouter);
 server.use('/api/cart', cartRouter);
 server.use('/api/service', serviceRouter);
