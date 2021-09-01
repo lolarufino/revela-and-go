@@ -7,53 +7,6 @@ const authRouter = new Router();
 
 let refreshTokens = [];
 
-authRouter.post('/register', passport.authenticate('signup', { session: false }),
-  (req, res) => {
-    res.send({
-      user: req.user,
-      message: 'Register works'
-    });
-  });
-
-authRouter.post('/login',
-  async (req, res, next) => {
-    passport.authenticate(
-      'login',
-      async (err, user) => {
-        try {
-          if (err || !user) {
-            const error = new Error('An error occurred.');
-            return next(error);
-          }
-          return req.login(
-            user,
-            { session: false },
-            async (error) => {
-              if (error) return next(error);
-
-              const data = { _id: user._id, email: user.email };
-
-              const token = jwt.sign(
-                { user: data },
-                process.env.JWT_SECRET,
-                { expriesIn: '1m' }
-              );
-              const refreshToken = jwt.sign(
-                { user: data },
-                process.env.JWT_TOKEN
-              );
-              refreshTokens.push(refreshToken);
-
-              return res.json({ token, refreshToken });
-            }
-          );
-        } catch (error) {
-          return next(error);
-        }
-      }
-    )(res, res, next);
-  });
-
 authRouter.get('/protected',
   passport.authenticate('jwt', { session: false }),
   (req, res) => res.json({

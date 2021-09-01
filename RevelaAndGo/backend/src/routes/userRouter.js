@@ -1,9 +1,12 @@
 const { Router } = require('express');
+const passport = require('passport');
 const {
   createUser,
   getUserById,
   deleteById,
-  updateUser
+  updateUser,
+  userRegistration,
+  userLogin
 } = require('../controllers/userControllers');
 
 const userRouter = new Router();
@@ -17,5 +20,13 @@ userRouter
   .get(getUserById)
   .delete(deleteById)
   .put(updateUser);
+
+userRouter
+  .route('/register', passport.authenticate('signup', { session: false }))
+  .post(userRegistration);
+
+userRouter
+  .route('/login')
+  .post(userLogin);
 
 module.exports = userRouter;

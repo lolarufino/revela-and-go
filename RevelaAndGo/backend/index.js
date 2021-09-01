@@ -9,6 +9,7 @@ const server = express();
 const port = process.env.PORT || 5000;
 
 require('./src/config/moongoseConfig');
+require('./src/config/passportConfig')(server);
 
 server.use(cors());
 server.use(morgan('dev'));

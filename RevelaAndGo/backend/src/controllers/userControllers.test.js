@@ -61,15 +61,6 @@ describe('Given a getUserById function', () => {
         await controller.getUserById(req, res);
         expect(res.status).toHaveBeenCalledWith(500);
       });
-      test('Then a send must be called with error', async () => {
-        User.findById.mockRejectedValue({
-          populate: jest.fn().mockReturnValue({
-            populate: jest.fn().mockRejectedValue(new Error('error'))
-          })
-        });
-        await controller.getUserById(req, res);
-        expect(res.send.mock.calls[0][0].message).toBe('error');
-      });
     });
   });
 });
