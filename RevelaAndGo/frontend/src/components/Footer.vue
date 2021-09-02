@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 25%;
 }
 
 .footer__copyright {
