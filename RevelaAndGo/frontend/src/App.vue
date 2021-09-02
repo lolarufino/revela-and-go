@@ -5,12 +5,14 @@
       <router-link to="/Profile">Profile</router-link> |
       <router-link to="/Cart">Cart</router-link>
     </div>
+    <button class="button">This is a button</button>
     <router-view />
   </div>
 </template>
 
 
 <style lang="scss">
+@import "./styles/mixins";
 #nav {
   padding: 30px;
 
@@ -22,5 +24,8 @@
       color: #a366a0;
     }
   }
+}
+.button {
+  @include button;
 }
 </style>

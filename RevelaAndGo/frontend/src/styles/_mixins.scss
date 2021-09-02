@@ -1,0 +1,11 @@
+@import "./variables";
+
+@mixin button {
+  font-family: $font;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: black 0px 0px 0px 2px inset, white 4px 4px 0px -1px, black 4px 4px;
+  padding: 9px;
+}
