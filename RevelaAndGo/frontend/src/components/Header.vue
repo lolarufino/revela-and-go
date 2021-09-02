@@ -35,13 +35,10 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   width: 100%;
-  .header__image {
-  }
   .header__container {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
     .header__logo {
       width: 280px;
     }
