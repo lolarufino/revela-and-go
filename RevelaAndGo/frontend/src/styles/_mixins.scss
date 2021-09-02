@@ -6,6 +6,26 @@
   color: white;
   border: 1px solid black;
   border-radius: 3px;
-  box-shadow: black 0px 0px 0px 2px inset, white 4px 4px 0px -1px, black 4px 4px;
+  box-shadow: white 4px 4px 0px -1px, black 4px 4px;
   padding: 9px;
+  &:hover {
+    transform: translateX(4px) translateY(4px);
+    box-shadow: none;
+    cursor: pointer;
+  }
+}
+
+@mixin container {
+  font-family: $font;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: black 6px 6px 0 -1px, white 6px 6px;
+  padding: 15px;
+}
+
+@mixin icon {
+  max-width: 60px;
+  max-height: 60px;
 }

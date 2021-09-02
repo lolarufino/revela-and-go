@@ -6,6 +6,7 @@
       <router-link to="/Cart">Cart</router-link>
     </div>
     <button class="button">This is a button</button>
+    <div class="div">This a container</div>
     <router-view />
   </div>
 </template>
@@ -27,5 +28,8 @@
 }
 .button {
   @include button;
+}
+.div {
+  @include container;
 }
 </style>
