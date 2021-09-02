@@ -6,7 +6,7 @@
       alt="Header image of a film roll"
     />
     <section class="header__container">
-      <input />
+      <Searcher />
       <img
         class="header__logo"
         src="https://i.ibb.co/fQrLsKn/logo.png"
@@ -19,10 +19,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Searcher from "./Searcher.vue";
 import Nav from "./Nav.vue";
 
 export default defineComponent({
   components: {
+    Searcher,
     Nav,
   },
 });
@@ -37,7 +39,7 @@ export default defineComponent({
   justify-content: space-around;
   align-items: center;
   .header__logo {
-    width: 250px;
+    width: 280px;
   }
 }
 </style>

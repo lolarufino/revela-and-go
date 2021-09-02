@@ -9,7 +9,7 @@
   </footer>
 </template>
 
-<style lang="scss">
+<style lang='scss'>
 @import "../styles/variables";
 
 .footer {
@@ -17,6 +17,8 @@
   flex-direction: column;
   align-items: center;
   height: 25%;
+  position: absolute;
+  bottom: 0;
 }
 
 .footer__copyright {
