@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <img
       class="header__image"
       src="https://i.ibb.co/9bPQ2Xq/toproll.png"
@@ -31,15 +31,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.header__image {
-  width: 100%;
-}
-.header__container {
+.header {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  .header__logo {
-    width: 280px;
+  flex-direction: column;
+  width: 100%;
+  .header__image {
+  }
+  .header__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    .header__logo {
+      width: 280px;
+    }
   }
 }
 </style>
