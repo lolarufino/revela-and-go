@@ -41,5 +41,13 @@
       cursor: pointer;
     }
   }
+  @media screen and (max-width: 768px) {
+    .nav__icon {
+      &:hover {
+        border-top: 0;
+        border-bottom: 0;
+      }
+    }
+  }
 }
 </style>

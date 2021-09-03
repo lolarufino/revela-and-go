@@ -11,14 +11,22 @@
   </footer>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Footer",
+});
+</script>
+
+
 <style lang='scss'>
 @import "../styles/variables";
-
 .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  margin-top: 60px;
   bottom: 0;
   .footer__copyright {
     font-family: $font;
