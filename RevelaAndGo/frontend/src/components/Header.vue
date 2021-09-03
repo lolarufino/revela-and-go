@@ -39,9 +39,19 @@ export default defineComponent({
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 35px;
+    margin-bottom: 60px;
     .header__logo {
       width: 280px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .header__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+      margin-bottom: 30px;
     }
   }
 }

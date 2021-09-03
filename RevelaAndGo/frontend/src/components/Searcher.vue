@@ -16,11 +16,11 @@
   padding: 5px;
   .searcher__input {
     border: none;
+    color: $gray;
+    font-family: $font;
+    font-weight: 900;
     &:focus {
       outline: none;
-      color: $gray;
-      font-family: $font;
-      font-weight: 900;
     }
     &::placeholder {
       color: $gray;
