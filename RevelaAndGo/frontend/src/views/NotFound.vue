@@ -25,7 +25,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   .notfound__image {
-    width: 14vw;
+    width: 200px;
     padding: 10px;
   }
   .notfound__text {

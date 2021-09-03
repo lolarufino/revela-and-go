@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
     component: LabDetail,
   },
   {
-    path: '/notfound',
+    path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: NotFound,
   },

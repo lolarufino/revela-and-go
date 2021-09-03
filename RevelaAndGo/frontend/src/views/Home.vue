@@ -77,6 +77,7 @@ export default defineComponent({
         width: 72vw;
         height: 8vh;
         font-size: 30px;
+        line-height: 10px;
       }
     }
     .home__image {
