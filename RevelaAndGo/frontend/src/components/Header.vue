@@ -39,6 +39,7 @@ export default defineComponent({
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 35px;
     .header__logo {
       width: 280px;
     }
