@@ -7,7 +7,7 @@
     />
     <div class="profile__container">
       <div class="profile__data">
-        <span class="profile__text">Nombre:</span
+        <span class="profile__text" data-test="name">Nombre:</span
         ><span class="profile__apitext">{{ user.name }}</span>
       </div>
       <div class="profile__data">

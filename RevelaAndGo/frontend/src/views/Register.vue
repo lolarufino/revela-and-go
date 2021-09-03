@@ -16,7 +16,7 @@
       />
       <input class="register__input" placeholder="Contraseña" />
     </div>
-    <button class="register__button">Registrarse</button>
+    <button class="register__button" data-test="register">Registrarse</button>
   </div>
 </template>
 

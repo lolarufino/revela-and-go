@@ -16,7 +16,7 @@
       />
       <input class="login__input" placeholder="Contraseña" />
     </div>
-    <button class="login__button">Login</button>
+    <button class="login__button" data-test="login">Login</button>
     <small>
       ¿Sin cuenta?
       <router-link class="login__register" to="/register"
