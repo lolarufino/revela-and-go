@@ -1,40 +1,46 @@
 <template>
-  <div>
-    <p>
+  <div class="guidedfilter">
+    <p class="guidedfilter__title">
       Para encontrar el laboratorio que necesitas, elige entre cada una de las
       siguientes opciones:
     </p>
-    <span>Tipo de carrete:</span>
-    <div>
-      <div>35mm</div>
-      <div>120mm</div>
+    <span class="guidedfilter__title">Tipo de carrete:</span>
+    <div class="guidedfilter__choice-container">
+      <button class="guidedfilter__choice" v-wave="true">35mm</button>
+      <button class="guidedfilter__choice" v-wave="true">120mm</button>
     </div>
-    <div>
-      <div>Color</div>
-      <div>Blanco y negro</div>
+    <div class="guidedfilter__choice-container">
+      <button class="guidedfilter__choice" v-wave="true">Color</button>
+      <button class="guidedfilter__choice" v-wave="true">
+        Blanco <br />y <br />negro
+      </button>
     </div>
-    <span>Tipo de revelado:</span>
-    <div>
-      <div>Sólo revelado</div>
-      <div>Revelado y escaneado</div>
+    <span class="guidedfilter__title">Tipo de revelado:</span>
+    <div class="guidedfilter__choice-container">
+      <button class="guidedfilter__choice" v-wave="true">Sólo revelado</button>
+      <button class="guidedfilter__choice" v-wave="true">
+        Revelado y escaneado
+      </button>
     </div>
-    <span>Copias en papel:</span>
-    <div>
-      <div>Si</div>
-      <div>No</div>
+    <span class="guidedfilter__title">Copias en papel:</span>
+    <div class="guidedfilter__choice-container">
+      <button class="guidedfilter__choice" v-wave="true">Si</button>
+      <button class="guidedfilter__choice" v-wave="true">No</button>
     </div>
-    <span>Envío de carretes de vuelta:</span>
-    <div>
-      <div>Si</div>
-      <div>No</div>
+    <span class="guidedfilter__title">Envío de carretes de vuelta:</span>
+    <div class="guidedfilter__choice-container">
+      <button class="guidedfilter__choice" v-wave="true">Si</button>
+      <button class="guidedfilter__choice" v-wave="true">No</button>
     </div>
-    <p>¡Genial!</p>
-    <p>
+    <p class="guidedfilter__title">¡Genial!</p>
+    <p class="guidedfilter__title">
       A continuación te mostraremos los laboratorios que coincidan con tus
       preferencias
     </p>
-    <button>
-      <router-link to="/labslist">Mostrar laboratorios</router-link>
+    <button class="guidedfilter__button">
+      <router-link to="/labslist" class="guidedfilter__showresults"
+        >Mostrar laboratorios</router-link
+      >
     </button>
   </div>
 </template>
@@ -48,4 +54,39 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import "../styles/variables";
+@import "../styles/mixins";
+.guidedfilter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: $font;
+  font-weight: 900;
+  height: 228vh;
+  .guidedfilter__choice-container {
+    display: flex;
+    .guidedfilter__choice {
+      @include container;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 19vw;
+      height: 25vh;
+      font-size: 36px;
+      font-weight: 900;
+      margin: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+  .guidedfilter__button {
+    @include button;
+    .guidedfilter__showresults {
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
 </style>

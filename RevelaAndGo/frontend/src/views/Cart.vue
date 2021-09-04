@@ -49,12 +49,18 @@ export default defineComponent({
   .cart__delete-button {
     border: none;
     cursor: pointer;
+    &:hover {
+      transform: scale(1.1, 1.1);
+    }
     .cart__delete-image {
       width: 30px;
       position: absolute;
       margin-left: -8px;
       margin-top: -12px;
       background-color: white;
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
     }
   }
   .cart__info {
