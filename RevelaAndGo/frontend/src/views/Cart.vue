@@ -13,8 +13,14 @@
         src="https://i.ibb.co/Px2X67c/digital-camera.png"
         alt="Icon of a camera"
       />
-      <p>Carrete 35mm • Color • Revelado y Escaneo</p>
-      <span>1 <span>unidad</span></span>
+      <div class="cart__items">
+        <p>&nbsp;• Carrete 35mm</p>
+        <p>&nbsp;• Color</p>
+        <p>&nbsp;• Revelado y Escaneo</p>
+      </div>
+      <span class="cart__info-quantity"
+        >1 <span class="cart__info-quantity">unidad</span></span
+      >
       <span>14,50€</span>
     </section>
     <p class="cart__total">Total: 14,50€</p>
@@ -25,7 +31,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-export default defineComponent({});
+export default defineComponent({
+  name: "Cart",
+});
 </script>
 
 <style lang="scss">
@@ -58,6 +66,12 @@ export default defineComponent({});
     .cart__image {
       width: 60px;
     }
+    .cart__items {
+      display: flex;
+    }
+    .cart__info-quantity {
+      color: $lightred;
+    }
   }
   .cart__total {
     margin: 25px;
@@ -67,7 +81,27 @@ export default defineComponent({});
   .cart__button {
     @include button;
     font-size: 24px;
-    width: 12vw;
+    min-width: 12vw;
+  }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    .cart__info {
+      display: flex;
+      flex-direction: column;
+      .cart__image {
+        padding: 5px;
+      }
+      .cart__items {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        padding: 5px;
+      }
+      .cart__info-quantity {
+        padding: 5px;
+      }
+    }
   }
 }
 </style>

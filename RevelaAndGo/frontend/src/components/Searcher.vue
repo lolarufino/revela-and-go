@@ -9,6 +9,15 @@
   </div>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Searcher",
+});
+</script>
+
+
 <style lang="scss">
 @import "../styles/mixins";
 @import "../styles/variables";
