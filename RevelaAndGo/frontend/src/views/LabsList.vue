@@ -1,11 +1,9 @@
 <template>
   <div>
-    <h1>Esto es Labs List</h1>
-    <ul>
-      <li v-for="lab in labs" :key="lab.name">
-        <p>{{ lab.name }}</p>
-      </li>
-    </ul>
+    <p>Estos son los laboratorios que corresponden a tu búsqueda:</p>
+    <div v-for="lab in labs" :key="lab.name">
+      <p>{{ lab.name }}</p>
+    </div>
   </div>
 </template>
 

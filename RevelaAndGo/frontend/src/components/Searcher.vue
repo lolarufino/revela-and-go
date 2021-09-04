@@ -1,7 +1,11 @@
 <template>
   <div class="searcher">
     <input class="searcher__input" placeholder="Buscar laboratorio" />
-    <img class="searcher__icon" src="https://i.ibb.co/HDCqQj5/magnify.png" />
+    <img
+      class="searcher__icon"
+      src="https://i.ibb.co/HDCqQj5/magnify.png"
+      alt="Icon of a lens"
+    />
   </div>
 </template>
 

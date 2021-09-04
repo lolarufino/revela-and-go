@@ -66,7 +66,6 @@ export default defineComponent({
     width: 20vw;
     margin-left: 90px;
     font-size: 15px;
-    font-weight: 900;
     .profile__data {
       display: flex;
       .profile__apitext {
