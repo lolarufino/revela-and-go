@@ -73,7 +73,7 @@ export default defineComponent({
       align-items: center;
       width: 19vw;
       height: 25vh;
-      font-size: 36px;
+      font-size: 27px;
       font-weight: 900;
       margin: 20px;
       text-align: center;
@@ -86,6 +86,20 @@ export default defineComponent({
       text-decoration: none;
       color: white;
       cursor: pointer;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .guidedfilter__title {
+      text-align: center;
+      padding: 10px;
+    }
+    .guidedfilter__choice-container {
+      .guidedfilter__choice {
+        font-size: 18px;
+        width: 33vw;
+        height: 18vh;
+        margin: 15px;
+      }
     }
   }
 }

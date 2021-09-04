@@ -5,7 +5,8 @@ export default createStore({
   state: {
     labs: [],
     user: {},
-    lab: {}
+    lab: {},
+    serviceChosen: []
   },
   mutations: {
     loadLabs(state, payload){
