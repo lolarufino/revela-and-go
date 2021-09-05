@@ -27,7 +27,9 @@
       <div class="profile__data-labs">
         <span class="profile__text">Laboratorios favoritos:</span>
         <div v-for="lab in user.favoriteLabs" :key="lab.name">
-          <button class="profile__button">{{ lab.name }}</button>
+          <router-link :to="'/labdetail/' + lab._id">
+            <button class="profile__button">{{ lab.name }}</button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -110,6 +112,7 @@ export default defineComponent({
       flex-direction: column;
       .profile__button {
         @include button;
+        margin-bottom: 10px;
       }
     }
   }
