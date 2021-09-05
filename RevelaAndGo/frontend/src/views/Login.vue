@@ -31,9 +31,12 @@
       />
     </div>
     <p v-if="error">Has introducido mal el email o la contraseña.</p>
-    <button type="submit" value="Login" class="login__button" data-test="login">
-      Login
-    </button>
+    <input
+      type="submit"
+      value="Login"
+      class="login__button"
+      data-test="login"
+    />
     <small>
       ¿Sin cuenta?
       <router-link class="login__register" to="/register"
@@ -51,6 +54,7 @@ export default defineComponent({
   name: "Login",
   methods: {
     async login() {
+      console.log(this.email, this.password);
       try {
         await auth.login(this.email, this.password);
         this.$router.push("/");
