@@ -29,7 +29,7 @@ export default createStore({
     },
     updatePrice(state, payload){
       state.price = payload;
-    }
+    },
   },
   actions: {
     async fetchLabsFromApi ({commit}){
@@ -38,7 +38,7 @@ export default createStore({
       commit('loadLabs', data);
     },
     async fetchUserFromApi ({commit}){
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxMmNlMDZhOTE3MzdkZWYxZTdlNThkOCIsImVtYWlsIjoibG9sYS5ydWYuYXJAZ21haWwuY29tIn0sImlhdCI6MTYzMDg1NTU5MCwiZXhwIjoxNjMwODU2NDkwfQ.dKM2m6C6U7LPpwGN8udLNJhEhvH7MHyejHgFcUK2628';
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxMmNlMDZhOTE3MzdkZWYxZTdlNThkOCIsImVtYWlsIjoibG9sYS5ydWYuYXJAZ21haWwuY29tIn0sImlhdCI6MTYzMDg2Mzg0MywiZXhwIjoxNjMwODY0NzQzfQ.5RdfRdPde6t7jXZQy5U9uel7bo63p2eZ4eYw3EPy1_s';
       const id = '612ce06a91737def1e7e58d8';
       const {data} = await axios({
         method: 'GET',
