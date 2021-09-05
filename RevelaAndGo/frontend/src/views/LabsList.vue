@@ -19,7 +19,7 @@
           <p class="labslist__lab-info-api">{{ lab.contact }}</p>
         </div>
       </div>
-      <span class="labslist__lab-price">{{ lab.baseRate }}€</span>
+      <span class="labslist__lab-price">{{ lab.baseRate + price }}€</span>
       <button class="labslist__lab-button">
         <img
           class="labslist__lab-addtocart"
@@ -43,7 +43,7 @@ import { mapState, mapActions } from "vuex";
 export default defineComponent({
   name: "LabsList",
   computed: {
-    ...mapState(["labs"]),
+    ...mapState(["labs", "price"]),
   },
   methods: {
     ...mapActions(["fetchLabsFromApi"]),
