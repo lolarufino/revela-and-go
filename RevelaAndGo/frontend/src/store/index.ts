@@ -5,18 +5,31 @@ export default createStore({
   state: {
     labs: [],
     user: {},
-    lab: {}
+    lab: {},
+    finalService: [],
+    price: null
   },
   mutations: {
-    loadLabs(state, payload){
-      state.labs = payload;
+    loadLabs(state: any, payload){
+      const filteredLabs = payload.filter((lab: any) => state.finalService.every((service: any) => lab.services.includes(service)));
+      state.labs = filteredLabs;
     },
     loadUser(state, payload){
       state.user = payload;
     },
     loadLab(state, payload){
       state.lab = payload;
-    }
+    },
+    updateFinalService(state,payload){
+      const finalResult = payload.filter((service: string) => service !== 'none');
+      if(state.finalService.length >= 1){
+        state.finalService = [];
+      }
+      state.finalService = finalResult;
+    },
+    updatePrice(state, payload){
+      state.price = payload;
+    },
   },
   actions: {
     async fetchLabsFromApi ({commit}){
@@ -25,7 +38,7 @@ export default createStore({
       commit('loadLabs', data);
     },
     async fetchUserFromApi ({commit}){
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxMmNlMDZhOTE3MzdkZWYxZTdlNThkOCIsImVtYWlsIjoibG9sYS5ydWYuYXJAZ21haWwuY29tIn0sImlhdCI6MTYzMDY5MjcxMiwiZXhwIjoxNjMwNjkzNjEyfQ.CJCjfIDVe-7S_B1lU5PT3UN1pLz5CLSrQUWjjy5qUe0';
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxMmNlMDZhOTE3MzdkZWYxZTdlNThkOCIsImVtYWlsIjoibG9sYS5ydWYuYXJAZ21haWwuY29tIn0sImlhdCI6MTYzMDg2Mzg0MywiZXhwIjoxNjMwODY0NzQzfQ.5RdfRdPde6t7jXZQy5U9uel7bo63p2eZ4eYw3EPy1_s';
       const id = '612ce06a91737def1e7e58d8';
       const {data} = await axios({
         method: 'GET',
@@ -34,8 +47,7 @@ export default createStore({
       })
       commit('loadUser', data);
     },
-    async fetchLabFromApi ({commit}){
-      const id = '612e0f6fa460a539597d0993';
+    async fetchLabFromApi ({commit}, id){
       const {data} = await axios.get(`http://localhost:5000/api/lab/${id}`)
 
       commit('loadLab', data);

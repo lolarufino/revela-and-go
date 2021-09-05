@@ -23,6 +23,7 @@ import Searcher from "./Searcher.vue";
 import Nav from "./Nav.vue";
 
 export default defineComponent({
+  name: "Header",
   components: {
     Searcher,
     Nav,

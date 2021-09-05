@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <Header />
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
     <Footer />
   </div>
 </template>
@@ -19,7 +23,6 @@ export default defineComponent({
 });
 </script>
 
-
 <style lang="scss">
 * {
   margin: 0;
@@ -29,5 +32,15 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

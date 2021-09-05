@@ -1,10 +1,19 @@
 <template>
   <div class="profile">
-    <img
-      class="profile__image"
-      src="https://i.ibb.co/bBb81PW/pexels-cottonbro-3585039.jpg"
-      alt="User image"
-    />
+    <div class="profile__image-container">
+      <button class="profile__edit-button">
+        <img
+          class="profile__edit-image"
+          src="https://i.ibb.co/55qGKN4/edit-button.png"
+          alt="Edit button"
+        />
+      </button>
+      <img
+        class="profile__image"
+        src="https://i.ibb.co/bBb81PW/pexels-cottonbro-3585039.jpg"
+        alt="User image"
+      />
+    </div>
     <div class="profile__container">
       <div class="profile__data">
         <span class="profile__text" data-test="userName">Nombre:</span
@@ -18,7 +27,9 @@
       <div class="profile__data-labs">
         <span class="profile__text">Laboratorios favoritos:</span>
         <div v-for="lab in user.favoriteLabs" :key="lab.name">
-          <button class="profile__button">{{ lab.name }}</button>
+          <router-link :to="'/labdetail/' + lab._id">
+            <button class="profile__button">{{ lab.name }}</button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -52,9 +63,32 @@ export default defineComponent({
   align-items: center;
   width: 60%;
   margin-bottom: 20px;
-  .profile__image {
-    @include container;
-    width: 21vw;
+  .profile__image-container {
+    display: flex;
+    flex-direction: column;
+    .profile__edit-button {
+      align-self: flex-end;
+      border: none;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
+
+      .profile__edit-image {
+        width: 30px;
+        position: absolute;
+        margin-left: -8px;
+        margin-top: -12px;
+        background-color: white;
+        &:hover {
+          transform: scale(1.1, 1.1);
+        }
+      }
+    }
+    .profile__image {
+      @include container;
+      width: 21vw;
+    }
   }
   .profile__container {
     display: flex;
@@ -66,7 +100,6 @@ export default defineComponent({
     width: 20vw;
     margin-left: 90px;
     font-size: 15px;
-    font-weight: 900;
     .profile__data {
       display: flex;
       .profile__apitext {
@@ -79,6 +112,7 @@ export default defineComponent({
       flex-direction: column;
       .profile__button {
         @include button;
+        margin-bottom: 10px;
       }
     }
   }
@@ -87,10 +121,12 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .profile__image {
+    .profile__image-container {
       order: 2;
-      width: 60vw;
       margin-top: 25px;
+      .profile__image {
+        width: 60vw;
+      }
     }
     .profile__container {
       order: 1;

@@ -1,12 +1,19 @@
 <template>
-  <div class="register">
+  <form class="register" action @submit.prevent="register">
     <div class="register__email">
       <img
         class="register__icon__email"
         src="https://i.ibb.co/chT60hC/register-1.png"
         alt="Icon of a person"
       />
-      <input class="register__input" placeholder="E-mail" />
+      <input
+        v-model="email"
+        class="register__input"
+        type="email"
+        id="email"
+        placeholder="E-mail"
+        required
+      />
     </div>
     <div class="register__password">
       <img
@@ -14,17 +21,46 @@
         src="https://i.ibb.co/gV48L8w/padlock.png"
         alt="Icon of a padlock"
       />
-      <input class="register__input" placeholder="Contraseña" />
+      <input
+        v-model="password"
+        class="register__input"
+        type="password"
+        id="password"
+        placeholder="Contraseña"
+        required
+      />
     </div>
-    <button class="register__button" data-test="register">Registrarse</button>
-  </div>
+    <input
+      type="submit"
+      value="Register"
+      class="register__button"
+      data-test="register"
+    />
+  </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import auth from "../auth/auth";
 
 export default defineComponent({
   name: "Register",
+  methods: {
+    async register() {
+      try {
+        await auth.register(this.email, this.password);
+        this.$router.push("/");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
 });
 </script>
 

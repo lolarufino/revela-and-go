@@ -26,7 +26,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 50px;
   bottom: 0;
   .footer__copyright {
     font-family: $font;

@@ -36,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Register,
   },
   {
-    path: '/labdetail',
+    path: '/labdetail/:labId',
     name: 'LabDetail',
     component: LabDetail,
   },

@@ -1,12 +1,19 @@
 <template>
-  <div class="login">
+  <form class="login" action @submit.prevent="login">
     <div class="login__email">
       <img
         class="login__icon__email"
         src="https://i.ibb.co/chT60hC/login-1.png"
         alt="Icon of a person"
       />
-      <input class="login__input" placeholder="E-mail" />
+      <input
+        v-model="email"
+        class="login__input"
+        type="email"
+        id="email"
+        placeholder="E-mail"
+        required
+      />
     </div>
     <div class="login__password">
       <img
@@ -14,23 +21,55 @@
         src="https://i.ibb.co/gV48L8w/padlock.png"
         alt="Icon of a padlock"
       />
-      <input class="login__input" placeholder="Contraseña" />
+      <input
+        v-model="password"
+        class="login__input"
+        type="password"
+        id="password"
+        placeholder="Contraseña"
+        required
+      />
     </div>
-    <button class="login__button" data-test="login">Login</button>
+    <p v-if="error">Has introducido mal el email o la contraseña.</p>
+    <input
+      type="submit"
+      value="Login"
+      class="login__button"
+      data-test="login"
+    />
     <small>
       ¿Sin cuenta?
       <router-link class="login__register" to="/register"
         >Regístrate</router-link
       >
     </small>
-  </div>
+  </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import auth from "../auth/auth";
 
 export default defineComponent({
   name: "Login",
+  methods: {
+    async login() {
+      console.log(this.email, this.password);
+      try {
+        await auth.login(this.email, this.password);
+        this.$router.push("/");
+      } catch (error) {
+        this.error = true;
+      }
+    },
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      error: false,
+    };
+  },
 });
 </script>
 
