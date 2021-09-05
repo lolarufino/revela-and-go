@@ -31,6 +31,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapState, mapActions } from "vuex";
+import { useRoute } from "vue-router";
 
 export default defineComponent({
   name: "LabDetail",
@@ -41,7 +42,9 @@ export default defineComponent({
     ...mapActions(["fetchLabFromApi"]),
   },
   mounted() {
-    this.fetchLabFromApi();
+    const route = useRoute();
+    const { labId } = route.params;
+    this.fetchLabFromApi(labId);
   },
 });
 </script>
