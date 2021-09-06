@@ -43,15 +43,17 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapMutations } from "vuex";
 import auth from "../auth/auth";
 
 export default defineComponent({
   name: "Login",
   methods: {
+    ...mapMutations(["loginUser"]),
     async login() {
-      console.log(this.email, this.password);
       try {
-        await auth.login(this.email, this.password);
+        const loggedUser = await auth.login(this.email, this.password);
+        this.loginUser(loggedUser);
         this.$router.push("/");
       } catch (error) {
         this.error = true;
