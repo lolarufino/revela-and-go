@@ -43,6 +43,7 @@ const loginUser = async (req, res, done) => {
             refreshTokens.push(refreshToken);
 
             return res.json({
+              user,
               token,
               refreshToken
             });
