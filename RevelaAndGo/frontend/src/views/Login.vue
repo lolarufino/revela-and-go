@@ -31,12 +31,7 @@
       />
     </div>
     <p v-if="error">Has introducido mal el email o la contraseña.</p>
-    <input
-      type="submit"
-      value="Login"
-      class="login__button"
-      data-test="login"
-    />
+    <input type="submit" value="Login" class="login__button" />
     <small>
       ¿Sin cuenta?
       <router-link class="login__register" to="/register"
