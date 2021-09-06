@@ -8,11 +8,7 @@
           alt="Edit button"
         />
       </button>
-      <img
-        class="profile__image"
-        src="https://i.ibb.co/bBb81PW/pexels-cottonbro-3585039.jpg"
-        alt="User image"
-      />
+      <img class="profile__image" :src="user.profilePicture" alt="User image" />
     </div>
     <div class="profile__container">
       <div class="profile__data">
@@ -38,6 +34,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useRoute } from "vue-router";
 import { mapState, mapActions } from "vuex";
 
 export default defineComponent({
@@ -46,10 +43,12 @@ export default defineComponent({
     ...mapState(["user"]),
   },
   methods: {
-    ...mapActions(["fetchUserFromApi"]),
+    ...mapActions(["fetchUserLoggedFromApi"]),
   },
   mounted() {
-    this.fetchUserFromApi();
+    const route = useRoute();
+    const { userId } = route.params;
+    this.fetchUserLoggedFromApi(userId);
   },
 });
 </script>

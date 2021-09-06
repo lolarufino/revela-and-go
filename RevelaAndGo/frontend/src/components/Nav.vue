@@ -6,7 +6,7 @@
         src="https://i.ibb.co/4YgR4Xk/home.png"
         alt="Icon for home. Shows a house."
     /></router-link>
-    <router-link to="/profile"
+    <router-link :to="'/profile/' + user._id"
       ><img
         class="nav__icon"
         src="https://i.ibb.co/fnZB8FP/id-card.png"
@@ -29,9 +29,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapState } from "vuex";
 
 export default defineComponent({
   name: "Nav",
+  computed: {
+    ...mapState(["user"]),
+  },
 });
 </script>
 
