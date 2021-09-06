@@ -6,9 +6,7 @@ describe('Given a Register component', () => {
         test('Should render a registrarse text', () => {
             const wrapper = mount(Register)
           
-            const name = wrapper.get('[data-test="register"]')
-          
-            expect(name.text()).toBe('Registrarse')
+            expect(wrapper.html()).toContain('<div class="register__email">')
           })
     })
 })

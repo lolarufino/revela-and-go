@@ -30,12 +30,7 @@
         required
       />
     </div>
-    <input
-      type="submit"
-      value="Register"
-      class="register__button"
-      data-test="register"
-    />
+    <input type="submit" value="Register" class="register__button" />
   </form>
 </template>
 
