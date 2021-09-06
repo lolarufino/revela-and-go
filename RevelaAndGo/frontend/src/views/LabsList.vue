@@ -1,6 +1,6 @@
 <template>
   <div class="labslist">
-    <p class="labslist__header">
+    <p class="labslist__header" data-test="foundlabs">
       Estos son los laboratorios que corresponden a tu búsqueda:
     </p>
     <div class="labslist__lab" v-for="lab in labs" :key="lab.name">
