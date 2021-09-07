@@ -1,38 +1,75 @@
 <template>
-  <div class="cart__container">
-    <button class="cart__delete-button">
-      <img
-        class="cart__delete-image"
-        src="https://i.ibb.co/kBkwBPj/remove.png"
-        alt="Delete button"
-      />
-    </button>
-    <section class="cart__info">
-      <img
-        class="cart__image"
-        src="https://i.ibb.co/Px2X67c/digital-camera.png"
-        alt="Icon of a camera"
-      />
-      <div class="cart__items">
-        <p>&nbsp;• Carrete 35mm</p>
-        <p>&nbsp;• Color</p>
-        <p>&nbsp;• Revelado y Escaneo</p>
-      </div>
-      <span class="cart__info-quantity"
-        >1 <span class="cart__info-quantity">unidad</span></span
-      >
-      <span>14,50€</span>
-    </section>
+  <div v-if="user" class="cart__container">
+    <div
+      v-for="service in user.cart.services"
+      :key="service._id"
+      class="cart__container"
+    >
+      <button class="cart__delete-button">
+        <img
+          class="cart__delete-image"
+          src="https://i.ibb.co/kBkwBPj/remove.png"
+          alt="Delete button"
+        />
+      </button>
+      <section class="cart__info">
+        <img
+          class="cart__image"
+          src="https://i.ibb.co/Px2X67c/digital-camera.png"
+          alt="Icon of a camera"
+        />
+        <div class="cart__items">
+          <p>&nbsp;• {{ service.filmType }} mm</p>
+          <div v-if="service.palette === 'bnw'">
+            <p>&nbsp;• Blanco y negro</p>
+          </div>
+          <div v-if="service.palette === 'color'"><p>&nbsp;• Color</p></div>
+          <div v-if="service.scan === true">
+            <p>&nbsp;• Revelado y escaneo</p>
+          </div>
+          <div v-if="service.scan === false"><p>&nbsp;• Sólo revelado</p></div>
+          <div v-if="service.print === true">
+            <p>&nbsp;• Copias en papel</p>
+          </div>
+          <div v-if="service.rollback === true">
+            <p>&nbsp;• Carretes de vuelta</p>
+          </div>
+        </div>
+        <span class="cart__info-price">Price</span>
+      </section>
+    </div>
     <p class="cart__total">Total: 14,50€</p>
     <button class="cart__button" data-test="pagar">Pagar</button>
+  </div>
+  <div v-else>
+    {{ this.$router.push("/Login") }}
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useRoute } from "vue-router";
+import { mapState, mapActions } from "vuex";
 
 export default defineComponent({
   name: "Cart",
+  computed: {
+    ...mapState(["user", "token", "service"]),
+  },
+  methods: {
+    ...mapActions(["fetchUserLoggedFromApi", "addServiceToThisUserCart"]),
+  },
+  mounted() {
+    const route = useRoute();
+    const { userId } = route.params;
+    this.fetchUserLoggedFromApi({ userId, token: this.token });
+    if (userId !== undefined) {
+      this.addServiceToThisUserCart({
+        cartId: this.user.cart,
+        service: this.service,
+      });
+    }
+  },
 });
 </script>
 
@@ -55,8 +92,7 @@ export default defineComponent({
     .cart__delete-image {
       width: 30px;
       position: absolute;
-      margin-left: -8px;
-      margin-top: -12px;
+      margin-left: -22px;
       background-color: white;
       &:hover {
         transform: scale(1.1, 1.1);
@@ -68,6 +104,7 @@ export default defineComponent({
     align-items: center;
     justify-content: space-around;
     width: 58vw;
+    margin: 15px;
     @include container;
     .cart__image {
       width: 60px;
@@ -75,7 +112,7 @@ export default defineComponent({
     .cart__items {
       display: flex;
     }
-    .cart__info-quantity {
+    .cart__info-price {
       color: $lightred;
     }
   }

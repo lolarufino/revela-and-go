@@ -6,10 +6,13 @@ export default createStore({
     labs: [],
     user: '',
     userId: null,
+    cartId: null,
+    serviceId: null,
     token: {},
     refreshToken: {},
     lab: {},
     finalService: [],
+    service: {},
     price: null,
     isLoggedIn: false
   },
@@ -28,7 +31,7 @@ export default createStore({
       state.user = payload;
     },
     updateFinalService(state,payload){
-      const finalResult = payload.filter((service: any) => service !== 'none');
+      const finalResult = payload.filter((service: any) => service !== false);
       if(state.finalService.length >= 1){
         state.finalService = [];
       }
@@ -40,8 +43,18 @@ export default createStore({
     loginUser(state, payload){
       state.user = payload.user;
       state.userId = payload.user._id;
+      state.cartId = payload.user.cart._id;
       state.token = payload.token;
       state.refreshToken = payload.refreshToken;
+    },
+    updateService(state, payload){
+      state.service = payload;
+    },
+    saveLastServiceId(state, payload){
+      state.serviceId = payload;
+    },
+    updatedCart(state, payload){
+      state.user.cart = payload;
     }
   },
   actions: {
@@ -58,12 +71,23 @@ export default createStore({
   async fetchUserLoggedFromApi({commit},user){
     const {userId} = user;
     const {token} = user;
-      const {data} = await axios({
+    const {data} = await axios({
         method: 'GET',
         url: `http://localhost:5000/api/user/${userId}`,
         headers: { Authorization: `Bearer ${token}` }
       })
       commit('loadUser', data);
+    },
+    async addServiceToDB ({commit},service){
+      const {data} = await axios.post(`http://localhost:5000/api/service`, service)
+      commit('saveLastServiceId',data._id);
+    },
+    async addServiceToThisUserCart({commit}, {cartId, service}){
+      console.log('service',service);
+      console.log('cartId',cartId);
+      const {data} = await axios.put(`http://localhost:5000/api/cart/${cartId}`, service)
+      console.log('data',data);
+      commit('updatedCart',data);
     }
   },
   modules: {
