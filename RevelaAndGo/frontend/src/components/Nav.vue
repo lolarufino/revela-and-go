@@ -12,7 +12,7 @@
         src="https://i.ibb.co/fnZB8FP/id-card.png"
         alt="Icon for profile. Shows a card."
     /></router-link>
-    <router-link to="/cart"
+    <router-link :to="'/cart/' + user._id"
       ><img
         class="nav__icon"
         src="https://i.ibb.co/KKGmM2s/shopping-cart.png"
