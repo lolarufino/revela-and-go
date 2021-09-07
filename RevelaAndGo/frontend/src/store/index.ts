@@ -68,10 +68,10 @@ export default createStore({
 
       commit('loadLab', data);
     },
-  async fetchUserLoggedFromApi({commit},user){
-    const {userId} = user;
-    const {token} = user;
-    const {data} = await axios({
+    async fetchUserLoggedFromApi({commit},user){
+      const {userId} = user;
+      const {token} = user;
+      const {data} = await axios({
         method: 'GET',
         url: `http://localhost:5000/api/user/${userId}`,
         headers: { Authorization: `Bearer ${token}` }
@@ -82,13 +82,11 @@ export default createStore({
       const {data} = await axios.post(`http://localhost:5000/api/service`, service)
       commit('saveLastServiceId',data._id);
     },
-    async addServiceToThisUserCart({commit}, {cartId, service}){
-      console.log('service',service);
-      console.log('cartId',cartId);
-      const {data} = await axios.put(`http://localhost:5000/api/cart/${cartId}`, service)
-      console.log('data',data);
+    async addServiceToThisUserCart({commit}, {cartId, serviceId}){
+      const newData = {services: [serviceId]}
+      const {data} = await axios.put(`http://localhost:5000/api/cart/${cartId}`, newData)
       commit('updatedCart',data);
-    }
+    },
   },
   modules: {
   },
