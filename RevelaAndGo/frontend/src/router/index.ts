@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Profile,
   },
   {
-    path: '/cart',
+    path: '/cart/:userId',
     name: 'Cart',
     component: Cart,
   },
