@@ -30,25 +30,23 @@
         required
       />
     </div>
-    <input
-      type="submit"
-      value="Register"
-      class="register__button"
-      data-test="register"
-    />
+    <input type="submit" value="Register" class="register__button" />
   </form>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapMutations } from "vuex";
 import auth from "../auth/auth";
 
 export default defineComponent({
   name: "Register",
   methods: {
+    ...mapMutations(["loginUser"]),
     async register() {
       try {
-        await auth.register(this.email, this.password);
+        const loggedUser = await auth.register(this.email, this.password);
+        this.loginUser(loggedUser);
         this.$router.push("/");
       } catch (error) {
         console.log(error);

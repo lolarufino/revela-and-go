@@ -6,9 +6,9 @@ describe('Given a Cart component', () => {
         test('Should render a pagar text', () => {
             const wrapper = mount(Cart)
           
-            const copyright = wrapper.get('[data-test="pagar"]')
+            const pay = wrapper.get('[data-test="pagar"]')
           
-            expect(copyright.text()).toBe('Pagar')
+            expect(pay.text()).toBe('Pagar')
           })
     })
 })

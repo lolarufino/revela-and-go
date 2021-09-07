@@ -13,7 +13,15 @@ const createUser = async ({ body }, res) => {
 const getUserById = async ({ params: { userId } }, res) => {
   try {
     const user = await User.findById(userId)
-      .populate({ path: 'favoriteLabs', select: ['name'] });
+      .populate({ path: 'favoriteLabs', select: ['name'] })
+      .populate({
+        path: 'cart',
+        select: ['services'],
+        populate: {
+          path: 'services',
+          model: 'Service'
+        }
+      });
     res.send(user);
   } catch (error) {
     res.status(500);

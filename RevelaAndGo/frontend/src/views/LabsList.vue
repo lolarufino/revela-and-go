@@ -1,6 +1,6 @@
 <template>
   <div class="labslist">
-    <p class="labslist__header">
+    <p class="labslist__header" data-test="foundlabs">
       Estos son los laboratorios que corresponden a tu búsqueda:
     </p>
     <div class="labslist__lab" v-for="lab in labs" :key="lab.name">
@@ -25,6 +25,7 @@
           class="labslist__lab-addtocart"
           src="https://i.ibb.co/w0yS2Vy/add-to-basket.png"
           alt="Icon of add to cart"
+          @click="$toast('Añadido al carrito'), addServiceToDB(service)"
         />
       </button>
     </div>
@@ -43,10 +44,10 @@ import { mapState, mapActions } from "vuex";
 export default defineComponent({
   name: "LabsList",
   computed: {
-    ...mapState(["labs", "price"]),
+    ...mapState(["labs", "price", "service", "isLoggedIn"]),
   },
   methods: {
-    ...mapActions(["fetchLabsFromApi"]),
+    ...mapActions(["fetchLabsFromApi", "addServiceToDB"]),
   },
   mounted() {
     this.fetchLabsFromApi();

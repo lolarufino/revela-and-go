@@ -16,12 +16,12 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
-    path: '/profile',
+    path: '/profile/:userId',
     name: 'Profile',
     component: Profile,
   },
   {
-    path: '/cart',
+    path: '/cart/:userId',
     name: 'Cart',
     component: Cart,
   },

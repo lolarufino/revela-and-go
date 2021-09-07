@@ -1,55 +1,59 @@
 <template>
-  <div class="profile">
-    <div class="profile__image-container">
-      <button class="profile__edit-button">
+  <div v-if="user" class="profile">
+    <div class="profile">
+      <div class="profile__image-container">
+        <button class="profile__edit-button">
+          <img
+            class="profile__edit-image"
+            src="https://i.ibb.co/55qGKN4/edit-button.png"
+            alt="Edit button"
+          />
+        </button>
         <img
-          class="profile__edit-image"
-          src="https://i.ibb.co/55qGKN4/edit-button.png"
-          alt="Edit button"
+          class="profile__image"
+          :src="user.profilePicture"
+          alt="User image"
         />
-      </button>
-      <img
-        class="profile__image"
-        src="https://i.ibb.co/bBb81PW/pexels-cottonbro-3585039.jpg"
-        alt="User image"
-      />
-    </div>
-    <div class="profile__container">
-      <div class="profile__data">
-        <span class="profile__text" data-test="userName">Nombre:</span
-        ><span class="profile__apitext">{{ user.name }}</span>
       </div>
-      <div class="profile__data">
-        <span class="profile__text">E-mail:</span
-        ><span class="profile__apitext">{{ user.email }}</span>
-      </div>
-      <br />
-      <div class="profile__data-labs">
-        <span class="profile__text">Laboratorios favoritos:</span>
-        <div v-for="lab in user.favoriteLabs" :key="lab.name">
-          <router-link :to="'/labdetail/' + lab._id">
-            <button class="profile__button">{{ lab.name }}</button>
-          </router-link>
+      <div class="profile__container">
+        <div class="profile__data">
+          <span class="profile__text">E-mail:</span
+          ><span class="profile__apitext">{{ user.email }}</span>
+        </div>
+        <br />
+        <div class="profile__data-labs">
+          <span class="profile__text">Laboratorios favoritos:</span>
+          <div v-for="lab in user.favoriteLabs" :key="lab.name">
+            <router-link :to="'/labdetail/' + lab._id">
+              <button class="profile__button">{{ lab.name }}</button>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <div v-else>
+    {{ this.$router.push("/Login") }}
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useRoute } from "vue-router";
 import { mapState, mapActions } from "vuex";
 
 export default defineComponent({
   name: "Profile",
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user", "token"]),
   },
   methods: {
-    ...mapActions(["fetchUserFromApi"]),
+    ...mapActions(["fetchUserLoggedFromApi"]),
   },
   mounted() {
-    this.fetchUserFromApi();
+    const route = useRoute();
+    const { userId } = route.params;
+    this.fetchUserLoggedFromApi({ userId, token: this.token });
   },
 });
 </script>
@@ -61,7 +65,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 85%;
   margin-bottom: 20px;
   .profile__image-container {
     display: flex;
@@ -97,7 +101,7 @@ export default defineComponent({
     font-family: $font;
     font-weight: 900;
     padding: 50px;
-    width: 20vw;
+    width: 28vw;
     margin-left: 90px;
     font-size: 15px;
     .profile__data {

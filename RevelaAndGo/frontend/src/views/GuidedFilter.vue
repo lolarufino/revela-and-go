@@ -10,13 +10,21 @@
         <div class="guidedfilter__choice-container">
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push(35), (price = price + 1)"
+            @click="
+              serviceChosen.push(35),
+                (price = price + 1),
+                (service.filmType = 35)
+            "
           >
             35mm
           </button>
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push(120), (price = price + 3)"
+            @click="
+              serviceChosen.push(120),
+                (price = price + 3),
+                (service.filmType = 120)
+            "
           >
             120mm
           </button>
@@ -27,13 +35,21 @@
         <div class="guidedfilter__choice-container">
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push('color'), (price = price + 2)"
+            @click="
+              serviceChosen.push('color'),
+                (price = price + 2),
+                (service.palette = 'color')
+            "
           >
             Color
           </button>
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push('bnw'), (price = price + 4)"
+            @click="
+              serviceChosen.push('bnw'),
+                (price = price + 4),
+                (service.palette = 'bnw')
+            "
           >
             Blanco <br />y <br />negro
           </button>
@@ -44,15 +60,19 @@
         <div class="guidedfilter__choice-container">
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push('none')"
+            @click="serviceChosen.push(false), (service.scan = false)"
           >
             Sólo revelado
           </button>
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push('scan'), (price = price + 4)"
+            @click="
+              serviceChosen.push('scan'),
+                (price = price + 4),
+                (service.scan = true)
+            "
           >
-            Revelado y escaneado
+            Revelado y escaneo
           </button>
         </div>
       </div>
@@ -61,13 +81,17 @@
         <div class="guidedfilter__choice-container">
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push('print'), (price = price + 14)"
+            @click="
+              serviceChosen.push('print'),
+                (price = price + 14),
+                (service.print = true)
+            "
           >
             Si
           </button>
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push('none')"
+            @click="serviceChosen.push(false), (service.print = false)"
           >
             No
           </button>
@@ -78,13 +102,17 @@
         <div class="guidedfilter__choice-container">
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push('rollback'), (price = price + 2)"
+            @click="
+              serviceChosen.push('rollback'),
+                (price = price + 2),
+                (service.rollBack = true)
+            "
           >
             Si
           </button>
           <button
             class="guidedfilter__choice"
-            @click="serviceChosen.push('none')"
+            @click="serviceChosen.push(false), (service.rollBack = false)"
           >
             No
           </button>
@@ -98,7 +126,11 @@
         </p>
         <button
           class="guidedfilter__button"
-          @click="updateFinalService(serviceChosen), updatePrice(price)"
+          @click="
+            updateFinalService(serviceChosen),
+              updatePrice(price),
+              updateService(service)
+          "
         >
           <router-link to="/labslist" class="guidedfilter__showresults"
             >Mostrar laboratorios</router-link
@@ -116,15 +148,22 @@ import { mapMutations, mapState } from "vuex";
 export default defineComponent({
   name: "GuidedFiler",
   computed: {
-    ...mapState(["finalService", "price"]),
+    ...mapState(["finalService", "price", "service"]),
   },
   methods: {
-    ...mapMutations(["updateFinalService", "updatePrice"]),
+    ...mapMutations(["updateFinalService", "updatePrice", "updateService"]),
   },
   data() {
     return {
       serviceChosen: [],
       price: 0,
+      service: {
+        filmType: null,
+        palette: null,
+        scan: null,
+        print: null,
+        rollBack: null,
+      },
     };
   },
 });
