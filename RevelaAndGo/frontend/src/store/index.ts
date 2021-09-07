@@ -4,12 +4,14 @@ import axios from 'axios';
 export default createStore({
   state: {
     labs: [],
-    user: {},
+    user: '',
+    userId: null,
     token: {},
     refreshToken: {},
     lab: {},
     finalService: [],
-    price: null
+    price: null,
+    isLoggedIn: false
   },
   mutations: {
     loadLabs(state: any, payload){
@@ -36,8 +38,8 @@ export default createStore({
       state.price = payload;
     },
     loginUser(state, payload){
+      state.user = payload.user;
       state.userId = payload.user._id;
-      state.user = payload.user;  
       state.token = payload.token;
       state.refreshToken = payload.refreshToken;
     }
@@ -53,11 +55,12 @@ export default createStore({
 
       commit('loadLab', data);
     },
-    async fetchUserLoggedFromApi({commit},id){
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYxMmNlMDZhOTE3MzdkZWYxZTdlNThkOCIsImVtYWlsIjoibG9sYS5ydWYuYXJAZ21haWwuY29tIn0sImlhdCI6MTYzMDkyNzU2MywiZXhwIjoxNjMwOTI4NDYzfQ.KT2RI108e_xKLEuAXGyHOQVWafcRCJkXjTS9CnJnPzQ';
+  async fetchUserLoggedFromApi({commit},user){
+    const {userId} = user;
+    const {token} = user;
       const {data} = await axios({
         method: 'GET',
-        url: `http://localhost:5000/api/user/${id}`,
+        url: `http://localhost:5000/api/user/${userId}`,
         headers: { Authorization: `Bearer ${token}` }
       })
       commit('loadUser', data);
