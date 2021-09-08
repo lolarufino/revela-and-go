@@ -54,7 +54,7 @@ import { mapState, mapActions } from "vuex";
 export default defineComponent({
   name: "Cart",
   computed: {
-    ...mapState(["user", "token", "serviceId"]),
+    ...mapState(["user", "token", "serviceId", "cartId"]),
   },
   methods: {
     ...mapActions(["fetchUserLoggedFromApi", "addServiceToThisUserCart"]),
@@ -65,7 +65,7 @@ export default defineComponent({
     this.fetchUserLoggedFromApi({ userId, token: this.token });
     if (userId !== undefined) {
       this.addServiceToThisUserCart({
-        cartId: this.user.cart,
+        cartId: this.cartId,
         serviceId: this.serviceId,
       });
     }
