@@ -18,7 +18,7 @@ interface Lab{
   address: string,
   contact: number,
   image: string,
-  services: [number, string],
+  services: Array<number | string>,
   baseRate: Number
 }
 
@@ -27,8 +27,8 @@ interface UserModel{
     email: string,
     password: string,
     profilePicture: string,
-    favoriteLabs: [Lab],
-    cart: string
+    favoriteLabs: Array<Lab>,
+    cart: string | Cart
 }
 
 interface UserFromApi{
@@ -38,7 +38,7 @@ interface UserFromApi{
     password: number,
     profilePicture: string,
     __v: number,
-    favoriteLabs: [],
+    favoriteLabs: Array<any>,
     cart: Cart      
 }
 
@@ -50,7 +50,7 @@ interface UserWithToken{
 
 interface Cart{
     _id: string,
-    services: [Service]
+    services: Array<Service>
 }
 
 interface Service{
