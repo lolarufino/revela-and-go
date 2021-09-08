@@ -3,16 +3,16 @@ import {State} from '@/types/interfaces';
 const state = {
     labs: [],
     user: '',
-    userId: null,
-    cartId: null,
-    serviceId: null,
-    token: {},
-    refreshToken: {},
+    userId: '',
+    cartId: '',
+    serviceId: '',
+    token: '',
+    refreshToken: '',
     lab: {},
     finalService: [],
     service: {},
-    price: null,
+    price: 0,
     isLoggedIn: false
   }
 
-export default state as unknown as State; 
+  export default state as unknown as State; 

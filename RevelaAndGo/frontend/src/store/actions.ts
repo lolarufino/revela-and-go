@@ -27,9 +27,11 @@ const actions = {
       const {data} = await axios.post(`http://localhost:5000/api/service`, service)
       commit('saveLastServiceId',data._id);
     },
-    async addServiceToThisUserCart({commit}:ActionContext<State, State>, {cartId, serviceId}: { cartId: string; serviceId: string }){
+    async addServiceToThisUserCart({commit}:ActionContext<State, State>, {cartId, serviceId}: { cartId: string; serviceId: string}){
       const newData = {services: [serviceId]}
+      console.log(newData)
       const {data} = await axios.put(`http://localhost:5000/api/cart/${cartId}`, newData)
+      console.log(data)
       commit('updatedCart',data);
     },
   }
