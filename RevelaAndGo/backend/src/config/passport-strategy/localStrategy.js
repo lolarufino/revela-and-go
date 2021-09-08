@@ -6,11 +6,12 @@ passport.use(
   'signup',
   new localStrategy.Strategy({
     usernameField: 'email',
-    passwordField: 'password'
+    passwordField: 'password',
+    passReqToCallback: true
   },
-  async (email, password, next) => {
+  async (req, email, password, next) => {
     try {
-      const user = await User.create({ email, password });
+      const user = await User.create({ email, password, cart: req.body.cart });
       return next(null, user);
     } catch (error) {
       return next(error);

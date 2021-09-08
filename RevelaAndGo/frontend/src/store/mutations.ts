@@ -32,7 +32,7 @@ const mutations = {
     loginUser(state: State, payload: UserWithToken){
       state.user = payload.user;
       state.userId = payload.user._id;
-      state.cartId = payload.user.cart._id;
+      state.cartId = payload.user.cart;
       state.token = payload.token;
       state.refreshToken = payload.refreshToken;
     },
