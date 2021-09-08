@@ -39,7 +39,7 @@ interface UserFromApi{
     profilePicture: string,
     __v: number,
     favoriteLabs: Array<any>,
-    cart: Cart      
+    cart: string   
 }
 
 interface UserWithToken{
