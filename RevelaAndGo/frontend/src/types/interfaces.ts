@@ -54,6 +54,7 @@ interface Cart{
 }
 
 interface Service{
+    _id: string,
     filmType: number,
     palette: string,
     scan: boolean,

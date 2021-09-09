@@ -11,7 +11,7 @@
     </section>
     <img
       class="home__image"
-      src="https://i.ibb.co/x6nKRMP/pexels-cottonbro-3585017.jpg"
+      src="https://i.ibb.co/PrG0wvL/pexels-cottonbro-3585017resized.jpg"
       alt="Hands holding a film"
     />
   </div>

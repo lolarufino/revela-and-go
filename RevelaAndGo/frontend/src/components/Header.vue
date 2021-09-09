@@ -2,14 +2,14 @@
   <header class="header">
     <img
       class="header__image"
-      src="https://i.ibb.co/9bPQ2Xq/toproll.png"
+      src="https://i.ibb.co/T2G9dzt/toprollresized.png"
       alt="Header image of a film roll"
     />
     <section class="header__container">
       <Searcher />
       <img
         class="header__logo"
-        src="https://i.ibb.co/fQrLsKn/logo.png"
+        src="https://i.ibb.co/Gc3J1JT/logoresized.png"
         alt="Logo of a film roll with revela&go written inside"
       />
       <Nav />
