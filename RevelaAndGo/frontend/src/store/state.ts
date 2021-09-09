@@ -2,7 +2,7 @@ import {State} from '@/types/interfaces';
 
 const state = {
     labs: [],
-    user: '',
+    user: /*localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') || '') : */'',
     userId: '',
     cartId: '',
     serviceId: '',

@@ -30,6 +30,7 @@ const mutations = {
       state.price = payload;
     },
     loginUser(state: State, payload: UserWithToken){
+      //localStorage.setItem("user", JSON.stringify(payload));
       state.user = payload.user;
       state.userId = payload.user._id;
       state.cartId = payload.user.cart;
