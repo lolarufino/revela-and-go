@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ActionContext } from 'vuex';
-import {State, Service} from '@/types/interfaces';
+import {State, Service, Cart} from '@/types/interfaces';
 
 const actions = {
     async fetchLabsFromApi ({commit}:ActionContext<State, State>): Promise<void>{
@@ -24,9 +24,7 @@ const actions = {
       commit('loadUser', data);
     },
     async addServiceToDB ({commit}:ActionContext<State, State>,service: Service): Promise<void>{
-      console.log('esto es service',service);
       const {data} = await axios.post(`http://localhost:5000/api/service`, service)
-      console.log('esto es data',data)
       commit('saveLastServiceId',data._id);
     },
     async addServiceToThisUserCart({commit}:ActionContext<State, State>, {cartId, serviceId}: { cartId: string; serviceId: string}){
@@ -34,6 +32,14 @@ const actions = {
       const {data} = await axios.put(`http://localhost:5000/api/cart/${cartId}`, newData)
       commit('updatedCart',data);
     },
+    async deleteService ({commit}:ActionContext<State, State>,{serviceId, cart}:{serviceId: string; cart: Cart}): Promise<void>{
+      const newData = cart.services.filter((service) => service._id !== serviceId);
+      console.log('esto es newData', newData)
+      const cartId = cart._id;
+      const {data} = await axios.put(`http://localhost:5000/api/cart/${cartId}`, newData)
+      console.log('esto es data',data)
+      commit('updatedCart',data);
+    }
   }
 
   export default actions;
