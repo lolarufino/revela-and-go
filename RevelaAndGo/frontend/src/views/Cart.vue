@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user" class="cart__container">
+  <div class="cart__container">
     <div
       v-for="service in user.cart.services"
       :key="service._id"
@@ -49,9 +49,6 @@
       Pagar
     </button>
   </div>
-  <div v-else>
-    {{ this.$router.push("/Login") }}
-  </div>
 </template>
 
 <script lang="ts">
@@ -71,11 +68,6 @@ export default defineComponent({
         return currentValue + price;
       }, 0);
     },
-  },
-  data() {
-    return {
-      finalCartPrice: [],
-    };
   },
   mounted() {
     const route = useRoute();

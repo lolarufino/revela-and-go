@@ -1,39 +1,30 @@
 <template>
-  <div v-if="user" class="profile">
-    <div class="profile">
-      <div class="profile__image-container">
-        <button class="profile__edit-button">
-          <img
-            class="profile__edit-image"
-            src="https://i.ibb.co/55qGKN4/edit-button.png"
-            alt="Edit button"
-          />
-        </button>
+  <div class="profile">
+    <div class="profile__image-container">
+      <button class="profile__edit-button">
         <img
-          class="profile__image"
-          :src="user.profilePicture"
-          alt="User image"
+          class="profile__edit-image"
+          src="https://i.ibb.co/55qGKN4/edit-button.png"
+          alt="Edit button"
         />
+      </button>
+      <img class="profile__image" :src="user.profilePicture" alt="User image" />
+    </div>
+    <div class="profile__container">
+      <div class="profile__data">
+        <span class="profile__text">E-mail:</span
+        ><span class="profile__apitext">{{ user.email }}</span>
       </div>
-      <div class="profile__container">
-        <div class="profile__data">
-          <span class="profile__text">E-mail:</span
-          ><span class="profile__apitext">{{ user.email }}</span>
-        </div>
-        <br />
-        <div class="profile__data-labs">
-          <span class="profile__text">Laboratorios favoritos:</span>
-          <div v-for="lab in user.favoriteLabs" :key="lab.name">
-            <router-link :to="'/labdetail/' + lab._id">
-              <button class="profile__button">{{ lab.name }}</button>
-            </router-link>
-          </div>
+      <br />
+      <div class="profile__data-labs">
+        <span class="profile__text">Laboratorios favoritos:</span>
+        <div v-for="lab in user.favoriteLabs" :key="lab.name">
+          <router-link :to="'/labdetail/' + lab._id">
+            <button class="profile__button">{{ lab.name }}</button>
+          </router-link>
         </div>
       </div>
     </div>
-  </div>
-  <div v-else>
-    {{ this.$router.push("/Login") }}
   </div>
 </template>
 
