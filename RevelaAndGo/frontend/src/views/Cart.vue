@@ -41,7 +41,13 @@
     <p class="cart__total">
       Total: {{ updateFinalPrice(user.cart.services) }}€
     </p>
-    <button class="cart__button" data-test="pagar">Pagar</button>
+    <button
+      class="cart__button"
+      data-test="pagar"
+      @click="$toast('Tu pago se ha realizado con éxito')"
+    >
+      Pagar
+    </button>
   </div>
   <div v-else>
     {{ this.$router.push("/Login") }}
@@ -114,7 +120,7 @@ export default defineComponent({
   .cart__info {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 58vw;
     margin: 15px;
     @include container;
