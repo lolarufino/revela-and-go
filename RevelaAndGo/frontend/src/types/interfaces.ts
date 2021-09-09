@@ -19,7 +19,7 @@ interface Lab{
   contact: number,
   image: string,
   services: Array<number | string>,
-  baseRate: Number
+  baseRate: number
 }
 
 interface UserModel{
@@ -54,11 +54,11 @@ interface Cart{
 }
 
 interface Service{
-    filmType: Number,
-    palette: String,
-    scan: Boolean,
-    print: Boolean,
-    rollBack: Boolean
+    filmType: number,
+    palette: string,
+    scan: boolean,
+    print: boolean,
+    rollBack: boolean
 }
 
 export {
