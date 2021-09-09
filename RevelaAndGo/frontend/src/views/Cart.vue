@@ -35,10 +35,12 @@
             <p>&nbsp;• Carretes de vuelta</p>
           </div>
         </div>
-        <span class="cart__info-price">Price</span>
+        <span class="cart__info-price">{{ service.price }}€</span>
       </section>
     </div>
-    <p class="cart__total">Total: 14,50€</p>
+    <p class="cart__total">
+      Total: {{ updateFinalPrice(user.cart.services) }}€
+    </p>
     <button class="cart__button" data-test="pagar">Pagar</button>
   </div>
   <div v-else>
@@ -58,6 +60,16 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["fetchUserLoggedFromApi", "addServiceToThisUserCart"]),
+    updateFinalPrice(services: [any]) {
+      return services?.reduce((currentValue, { price }) => {
+        return currentValue + price;
+      }, 0);
+    },
+  },
+  data() {
+    return {
+      finalCartPrice: [],
+    };
   },
   mounted() {
     const route = useRoute();

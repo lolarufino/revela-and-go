@@ -24,7 +24,9 @@ const actions = {
       commit('loadUser', data);
     },
     async addServiceToDB ({commit}:ActionContext<State, State>,service: Service): Promise<void>{
+      console.log('esto es service',service);
       const {data} = await axios.post(`http://localhost:5000/api/service`, service)
+      console.log('esto es data',data)
       commit('saveLastServiceId',data._id);
     },
     async addServiceToThisUserCart({commit}:ActionContext<State, State>, {cartId, serviceId}: { cartId: string; serviceId: string}){

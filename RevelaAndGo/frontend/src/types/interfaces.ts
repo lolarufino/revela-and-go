@@ -58,7 +58,8 @@ interface Service{
     palette: string,
     scan: boolean,
     print: boolean,
-    rollBack: boolean
+    rollBack: boolean,
+    price: number
 }
 
 export {

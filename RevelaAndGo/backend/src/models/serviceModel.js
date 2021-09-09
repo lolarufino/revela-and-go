@@ -5,7 +5,8 @@ const serviceModel = new Schema({
   palette: String,
   scan: Boolean,
   print: Boolean,
-  rollBack: Boolean
+  rollBack: Boolean,
+  price: Number
 });
 
 module.exports = model('Service', serviceModel);

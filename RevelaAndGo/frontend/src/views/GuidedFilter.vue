@@ -163,6 +163,7 @@ export default defineComponent({
         scan: null,
         print: null,
         rollBack: null,
+        price: 0,
       },
     };
   },

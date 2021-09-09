@@ -25,7 +25,10 @@
           class="labslist__lab-addtocart"
           src="https://i.ibb.co/w0yS2Vy/add-to-basket.png"
           alt="Icon of add to cart"
-          @click="$toast('Añadido al carrito'), addServiceToDB(service)"
+          @click="
+            $toast('Añadido al carrito'),
+              updateServicePrice(lab.baseRate, price)
+          "
         />
       </button>
     </div>
@@ -48,6 +51,10 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["fetchLabsFromApi", "addServiceToDB"]),
+    updateServicePrice(labRate, price) {
+      this.service.price = labRate + price;
+      this.addServiceToDB(this.service);
+    },
   },
   mounted() {
     this.fetchLabsFromApi();
