@@ -28,7 +28,7 @@ const updateCartById = async (req, res) => {
   const { cartId } = req.params;
   const { body } = req;
   try {
-    const updatedCart = await Cart.findByIdAndUpdate(cartId, { $addToSet: body }, { new: true })
+    const updatedCart = await Cart.findByIdAndUpdate(cartId, body, { new: true })
       .populate('services');
     res.send(updatedCart);
   } catch (error) {
