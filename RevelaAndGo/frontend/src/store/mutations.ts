@@ -7,18 +7,17 @@ import {State,
 
 const mutations = {
     loadLabs(state: State, payload: Array<Lab>){
-      /*const filteredLabs = payload
+      const filteredLabs = payload
       .filter((lab: Lab) => state.finalService
       .every((service: any) => lab.services
-      .includes(service)));*/
-      const filteredLabs = payload
+      .includes(service)));
+      /*const filteredLabs = payload
       .reduce(function (matchedLabs:Array<Lab>, lab:Lab, index:number){
       if(state.finalService[index] === lab.services[index]){
         matchedLabs.push(lab);
       } 
-      return matchedLabs;}, []);
+      return matchedLabs;}, []);*/
       state.labs = filteredLabs;
-      console.log('filteredlabs',filteredLabs)
     },
     loadLab(state: State, payload: Lab){
       state.lab = payload;

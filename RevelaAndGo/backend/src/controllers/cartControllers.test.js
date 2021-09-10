@@ -62,9 +62,7 @@ describe('Given a getCartById function', () => {
     describe('And it is resolved', () => {
       test('Then a send must be called', async () => {
         Cart.findById.mockReturnValue({
-          populate: jest.fn().mockReturnValue({
-            populate: jest.fn().mockResolvedValue({})
-          })
+          populate: jest.fn().mockResolvedValue({})
         });
         await controllers.getCartById(req, res);
         expect(res.send).toHaveBeenCalled();
@@ -73,18 +71,14 @@ describe('Given a getCartById function', () => {
     describe('And it is rejected', () => {
       test('Then a status must be called with 500', async () => {
         Cart.findById.mockReturnValue({
-          populate: jest.fn().mockReturnValue({
-            populate: jest.fn().mockRejectedValue({})
-          })
+          populate: jest.fn().mockRejectedValue({})
         });
         await controllers.getCartById(req, res);
         expect(res.status).toHaveBeenCalledWith(500);
       });
       test('Then a send must be called with an error', async () => {
         Cart.findById.mockReturnValue({
-          populate: jest.fn().mockReturnValue({
-            populate: jest.fn().mockRejectedValue(new Error('error'))
-          })
+          populate: jest.fn().mockRejectedValue(new Error('error'))
         });
         await controllers.getCartById(req, res);
         expect(res.send.mock.calls[0][0].message).toBe('error');
@@ -102,9 +96,7 @@ describe('Given a updateCartById', () => {
     describe('And it is resolved', () => {
       test('Then a send must be called', async () => {
         Cart.findByIdAndUpdate.mockReturnValue({
-          populate: jest.fn().mockReturnValue({
-            populate: jest.fn().mockResolvedValue({})
-          })
+          populate: jest.fn().mockResolvedValue({})
         });
         await controllers.updateCartById(req, res);
         expect(res.send).toHaveBeenCalled();
@@ -113,9 +105,7 @@ describe('Given a updateCartById', () => {
     describe('And it is rejected', () => {
       test('Then a status must be called with 500', async () => {
         Cart.findByIdAndUpdate.mockReturnValue({
-          populate: jest.fn().mockReturnValue({
-            populate: jest.fn().mockRejectedValue({})
-          })
+          populate: jest.fn().mockRejectedValue({})
         });
         await controllers.updateCartById(req, res);
         expect(res.status).toHaveBeenCalledWith(500);
