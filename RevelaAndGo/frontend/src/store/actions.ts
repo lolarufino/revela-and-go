@@ -38,14 +38,11 @@ const actions = {
       const {data} = await axios.put(`${process.env.VUE_APP_API_URL}/cart/${cartId}`, newData)
       commit('updatedCart',data);
     },
-    /*async searchingLab({commit}:ActionContext<State, State>, inputValue: string): Promise<void>{
-      console.log('inputvalue',inputValue);
+    async searchingLab({commit}:ActionContext<State, State>, inputValue: string): Promise<void>{
       const {data} = await axios.get(`${process.env.VUE_APP_API_URL}/lab`)
-      console.log('data',data)
-      const returnedLabs = data.filter((lab:any) => lab.name inputValue)
-      console.log(returnedLabs)
+      const returnedLabs = data.filter((lab:any) => lab.name.toLowerCase() === inputValue)
       commit('foundedLabs', returnedLabs)
-    }*/
+    }
   }
 
   export default actions;

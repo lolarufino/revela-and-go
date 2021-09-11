@@ -1,5 +1,20 @@
 <template>
-  <p>{{ this.value }}</p>
+  <div class="labslist">
+    <p class="labslist__header" data-test="foundlabs">
+      Estos son los laboratorios que corresponden a tu búsqueda:
+    </p>
+    <div v-for="lab in this.value" :key="lab.name">
+      <router-link :to="'/labdetail/' + lab._id">
+        <div class="labslist__lab">
+          <img
+            class="labslist__lab-image"
+            :src="lab.image"
+            alt="Logo of the lab"
+          />
+        </div>
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
