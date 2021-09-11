@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="user" class="nav">
+  <nav v-if="user" class="nav" aria-labelledby="User logged">
     <router-link to="/"
       ><img
         class="nav__icon"
@@ -25,7 +25,7 @@
         alt="Icon for logout. Shows a door."
     /></router-link>
   </nav>
-  <nav v-else class="nav">
+  <nav v-else class="nav" aria-labelledby="User not logged">
     <router-link to="/"
       ><img
         class="nav__icon"
