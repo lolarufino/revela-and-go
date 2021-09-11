@@ -5,7 +5,7 @@
     >
     <img
       class="footer__image"
-      src="https://i.ibb.co/ZTbzqVh/bottomroll.png"
+      src="https://i.ibb.co/BPrM9p7/bottomroll.png"
       alt="Footer image of a film roll"
     />
   </footer>

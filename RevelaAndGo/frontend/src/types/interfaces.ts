@@ -10,7 +10,8 @@ interface State{
     finalService: Array<number | string | any>,
     service: object,
     price: number,
-    isLoggedIn: boolean
+    isLoggedIn: boolean,
+    value: Array<Lab>
 }
 
 interface Lab{
@@ -54,6 +55,7 @@ interface Cart{
 }
 
 interface Service{
+    _id: string,
     filmType: number,
     palette: string,
     scan: boolean,

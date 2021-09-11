@@ -1,6 +1,4 @@
-import {State} from '@/types/interfaces';
-
-const state = {
+const mockedState = {
     labs: [],
     user: '',
     userId: '',
@@ -12,8 +10,5 @@ const state = {
     finalService: [],
     service: {},
     price: 0,
-    isLoggedIn: false,
-    value: []
+    isLoggedIn: true
   }
-
-  export default state as unknown as State; 

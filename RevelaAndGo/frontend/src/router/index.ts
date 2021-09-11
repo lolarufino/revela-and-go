@@ -8,6 +8,7 @@ import LabDetail from '../views/LabDetail.vue';
 import NotFound from '../views/NotFound.vue';
 import GuidedFilter from '../views/GuidedFilter.vue';
 import LabsList from '../views/LabsList.vue';
+import SearchLab from '../views/SearchLab.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -54,6 +55,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/labslist',
     name: 'LabsList',
     component: LabsList,
+  },
+  {
+    path: '/searchlab',
+    name: 'SearchLab',
+    component: SearchLab,
   },
 ];
 
