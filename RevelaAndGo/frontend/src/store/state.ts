@@ -2,7 +2,7 @@ import {State} from '@/types/interfaces';
 
 const state = {
     labs: [],
-    user: /*localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') || '') : */'',
+    user: '',
     userId: '',
     cartId: '',
     serviceId: '',
@@ -12,7 +12,8 @@ const state = {
     finalService: [],
     service: {},
     price: 0,
-    isLoggedIn: false
+    isLoggedIn: false,
+    value: []
   }
 
   export default state as unknown as State; 

@@ -1,7 +1,11 @@
 <template>
   <div class="searcher">
-    <input class="searcher__input" placeholder="Buscar laboratorio" />
-    <button class="searcher__button">
+    <input
+      class="searcher__input"
+      placeholder="Buscar laboratorio"
+      v-model="inputValue"
+    />
+    <button class="searcher__button" @click="searchLab()">
       <img
         class="searcher__icon"
         src="https://i.ibb.co/HDCqQj5/magnify.png"
@@ -13,9 +17,25 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapState, mapActions } from "vuex";
 
 export default defineComponent({
   name: "Searcher",
+  computed: {
+    ...mapState(["labs"]),
+  },
+  methods: {
+    ...mapActions(["searchingLab"]),
+    searchLab() {
+      this.searchingLab(this.inputValue);
+      this.$router.push("/searchlab");
+    },
+  },
+  data() {
+    return {
+      inputValue: "",
+    };
+  },
 });
 </script>
 

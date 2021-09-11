@@ -11,12 +11,6 @@ const mutations = {
       .filter((lab: Lab) => state.finalService
       .every((service: any) => lab.services
       .includes(service)));
-      /*const filteredLabs = payload
-      .reduce(function (matchedLabs:Array<Lab>, lab:Lab, index:number){
-      if(state.finalService[index] === lab.services[index]){
-        matchedLabs.push(lab);
-      } 
-      return matchedLabs;}, []);*/
       state.labs = filteredLabs;
     },
     loadLab(state: State, payload: Lab){
@@ -36,7 +30,6 @@ const mutations = {
       state.price = payload;
     },
     loginUser(state: State, payload: UserWithToken){
-      //localStorage.setItem("user", JSON.stringify(payload));
       state.user = payload.user;
       state.userId = payload.user._id;
       state.cartId = payload.user.cart;
@@ -51,6 +44,9 @@ const mutations = {
     },
     updatedCart(state: State, payload: Cart){
       state.user.cart = payload;
+    },
+    foundedLabs(state: State, payload: Array<Lab>){
+      state.value = payload;
     }
 }
 
