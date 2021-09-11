@@ -6,7 +6,7 @@ interface State{
     serviceId: string,
     token: string,
     refreshToken: string,
-    lab: object,
+    lab: Lab,
     finalService: Array<number | string | any>,
     service: object,
     price: number,
@@ -15,6 +15,7 @@ interface State{
 }
 
 interface Lab{
+    _id: string,
   name: string,
   address: string,
   contact: number,
@@ -24,10 +25,12 @@ interface Lab{
 }
 
 interface UserModel{
+    _id: string,
     name: string,
     email: string,
     password: string,
     profilePicture: string,
+    __v: number,
     favoriteLabs: Array<Lab>,
     cart: string | Cart
 }
@@ -36,7 +39,7 @@ interface UserFromApi{
     _id: string,
     name: string,
     email: string,
-    password: number,
+    password: string,
     profilePicture: string,
     __v: number,
     favoriteLabs: Array<any>,
@@ -61,7 +64,8 @@ interface Service{
     scan: boolean,
     print: boolean,
     rollBack: boolean,
-    price: number
+    price: number,
+    __v: number
 }
 
 export {
