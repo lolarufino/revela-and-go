@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="user" class="nav">
+  <nav v-if="user" class="nav" aria-labelledby="User logged">
     <router-link to="/"
       ><img
         class="nav__icon"
@@ -25,7 +25,7 @@
         alt="Icon for logout. Shows a door."
     /></router-link>
   </nav>
-  <nav v-else class="nav">
+  <nav v-else class="nav" aria-labelledby="User not logged">
     <router-link to="/"
       ><img
         class="nav__icon"
@@ -74,16 +74,17 @@ export default defineComponent({
     width: 40px;
     padding: 7px;
     &:hover {
-      border-bottom: 2px dashed $lightred;
-      border-top: 2px dashed $lightred;
+      width: 50px;
+      border: 2px dashed $lightred;
+      border-radius: 50%;
       cursor: pointer;
+      padding: 0;
     }
   }
   @media screen and (max-width: 768px) {
     .nav__icon {
       &:hover {
-        border-top: 0;
-        border-bottom: 0;
+        border: 0;
       }
     }
   }

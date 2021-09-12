@@ -106,13 +106,16 @@ export default defineComponent({
       border: none;
       background-color: white;
       cursor: pointer;
-      &:hover {
-        border-bottom: 2px dashed $lightred;
-        border-top: 2px dashed $lightred;
-      }
+
       .labslist__lab-addtocart {
         padding: 7px;
-        width: 50px;
+        width: 40px;
+        &:hover {
+          padding: 0;
+          width: 50px;
+          border: 2px dashed $lightred;
+          border-radius: 50%;
+        }
       }
     }
   }

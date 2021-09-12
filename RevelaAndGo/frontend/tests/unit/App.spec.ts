@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
-import router from '../../src/router';
+import App from '../../src/App.vue';
 import state from '../mockedState';
-import Header from '../../src/components/Header.vue';
+import router from '../../src/router';
 
-describe('Given a Header component', ()=> {
-    describe('When is rendered', ()=> {
-        test('Should render the header html tag', () => {
-            const wrapper = mount(Header, {
+describe('Given a App component', () => {
+    describe('When is rendered', () => {
+        test('Should render a header component', () => {
+            const wrapper = mount(App, {
                 global: {
                   plugins: [router],
                   mocks: {
@@ -18,6 +18,6 @@ describe('Given a Header component', ()=> {
               })
           
             expect(wrapper.html()).toContain('<header class="header">')
-        })
+          })
     })
 })

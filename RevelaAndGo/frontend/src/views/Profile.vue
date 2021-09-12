@@ -12,7 +12,7 @@
     </div>
     <div class="profile__container">
       <div class="profile__data">
-        <span class="profile__text">E-mail:</span
+        <span class="profile__text" data-test="email">E-mail:</span
         ><span class="profile__apitext">{{ user.email }}</span>
       </div>
       <br />

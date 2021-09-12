@@ -1,30 +1,30 @@
 import { mount } from '@vue/test-utils';
 import router from '../../src/router';
 import state from '../mockedState';
-import LabDetail from '../../src/views/LabDetail.vue';
+import SearchLab from '../../src/views/SearchLab.vue';
 
-describe('Given a LabDetail component', () => {
+describe('Given a SearchLab component', () => {
     describe('When is rendered', () => {
-        test('Should render an address text', () => {
-            const wrapper = mount(LabDetail, {
+        test('Should render a found labs text', () => {
+            const wrapper = mount(SearchLab, {
                 global: {
                   plugins: [router],
                   mocks: {
                     $store: {
                       state,
                       actions: {
-                        fetchLabFromApi: jest.fn(),
+                        fetchLabsFromApi: jest.fn(),
                       },
                       dispatch: jest.fn(),
                       commit: jest.fn(),
                     },
                   },
                 },
-            })
+              })
+
+              const foundlabs = wrapper.get('[data-test="foundlabs"]')
           
-            const address = wrapper.get('[data-test="address"]')
-          
-            expect(address.text()).toBe('Dirección:')
+            expect(foundlabs.text()).toBe('Estos son los laboratorios que corresponden a tu búsqueda:')
           })
     })
 })

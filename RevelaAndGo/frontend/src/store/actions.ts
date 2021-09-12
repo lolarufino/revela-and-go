@@ -40,7 +40,9 @@ const actions = {
     },
     async searchingLab({commit}:ActionContext<State, State>, inputValue: string): Promise<void>{
       const {data} = await axios.get(`${process.env.VUE_APP_API_URL}/lab`)
-      const returnedLabs = data.filter((lab:any) => lab.name.toLowerCase() === inputValue)
+      const returnedLabs = data.filter((lab:any) => lab.name.toLowerCase().startsWith(inputValue.toLowerCase())
+      )
+
       commit('foundedLabs', returnedLabs)
     }
   }
