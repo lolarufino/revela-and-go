@@ -4,6 +4,7 @@
       class="searcher__input"
       placeholder="Buscar laboratorio"
       v-model="inputValue"
+      v-on:input="searchLab()"
     />
     <button class="searcher__button" @click="searchLab()">
       <img
