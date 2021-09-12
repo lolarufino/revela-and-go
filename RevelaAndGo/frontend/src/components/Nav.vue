@@ -83,8 +83,14 @@ export default defineComponent({
   }
   @media screen and (max-width: 768px) {
     .nav__icon {
+      width: 40px;
+      padding: 7px;
       &:hover {
+        width: 50px;
         border: 0;
+        border-radius: 0;
+        cursor: pointer;
+        padding: 0;
       }
     }
   }
