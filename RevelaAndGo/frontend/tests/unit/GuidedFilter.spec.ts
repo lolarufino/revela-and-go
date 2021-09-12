@@ -5,8 +5,10 @@ describe('Given a GuidedFilter component', () => {
     describe('When is rendered', () => {
         test('Should render a choose text', () => {
             const wrapper = mount(GuidedFilter)
+
+            const guided = wrapper.get('[data-test="guided"]')
           
-            expect(wrapper.html()).toContain('<p class="guidedfilter__title">Para encontrar el laboratorio que necesitas, elige entre cada una de las siguientes opciones:</p>')
+            expect(guided.text()).toBe('Para encontrar el laboratorio que necesitas, elige entre cada una de las siguientes opciones:')
           })
     })
 })

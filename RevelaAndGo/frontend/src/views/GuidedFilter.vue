@@ -2,7 +2,7 @@
   <div class="guidedfilter">
     <transition name="fade" mode="out-in">
       <div v-if="serviceChosen.length === 0" key="1" class="guidedfilter">
-        <p class="guidedfilter__title">
+        <p class="guidedfilter__title" data-test="guided">
           Para encontrar el laboratorio que necesitas, elige entre cada una de
           las siguientes opciones:
         </p>
