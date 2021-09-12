@@ -74,16 +74,17 @@ export default defineComponent({
     width: 40px;
     padding: 7px;
     &:hover {
-      border-bottom: 2px dashed $lightred;
-      border-top: 2px dashed $lightred;
+      width: 50px;
+      border: 2px dashed $lightred;
+      border-radius: 50%;
       cursor: pointer;
+      padding: 0;
     }
   }
   @media screen and (max-width: 768px) {
     .nav__icon {
       &:hover {
-        border-top: 0;
-        border-bottom: 0;
+        border: 0;
       }
     }
   }
