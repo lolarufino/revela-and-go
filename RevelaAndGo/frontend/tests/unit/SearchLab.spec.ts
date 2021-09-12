@@ -21,8 +21,10 @@ describe('Given a SearchLab component', () => {
                   },
                 },
               })
+
+              const foundlabs = wrapper.get('[data-test="foundlabs"]')
           
-            expect(wrapper.html()).toContain('<p class="labslist__header" data-test="foundlabs"> Estos son los laboratorios que corresponden a tu búsqueda:</p>')
+            expect(foundlabs.text()).toBe('Estos son los laboratorios que corresponden a tu búsqueda:')
           })
     })
 })
