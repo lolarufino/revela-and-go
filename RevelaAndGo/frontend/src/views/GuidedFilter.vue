@@ -143,9 +143,9 @@
         v-if="serviceChosen.length === 0"
         key="1"
         class="guidedfilter__progressbar-inside"
-        style="width: 5%"
+        style="width: 10%"
       >
-        5%
+        0%
       </div>
       <div
         v-else-if="serviceChosen.length === 1"
