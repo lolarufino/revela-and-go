@@ -138,6 +138,56 @@
         </button>
       </div>
     </transition>
+    <div class="guidedfilter__progressbar">
+      <div
+        v-if="serviceChosen.length === 0"
+        key="1"
+        class="guidedfilter__progressbar-inside"
+        style="width: 5%"
+      >
+        5%
+      </div>
+      <div
+        v-else-if="serviceChosen.length === 1"
+        key="2"
+        class="guidedfilter__progressbar-inside"
+        style="width: 20%"
+      >
+        20%
+      </div>
+      <div
+        v-else-if="serviceChosen.length === 2"
+        key="3"
+        class="guidedfilter__progressbar-inside"
+        style="width: 40%"
+      >
+        40%
+      </div>
+      <div
+        v-else-if="serviceChosen.length === 3"
+        key="4"
+        class="guidedfilter__progressbar-inside"
+        style="width: 60%"
+      >
+        60%
+      </div>
+      <div
+        v-else-if="serviceChosen.length === 4"
+        key="5"
+        class="guidedfilter__progressbar-inside"
+        style="width: 80%"
+      >
+        80%
+      </div>
+      <div
+        v-else-if="serviceChosen.length === 5"
+        key="6"
+        class="guidedfilter__progressbar-inside"
+        style="width: 100%"
+      >
+        100%
+      </div>
+    </div>
   </div>
 </template>
 
@@ -211,6 +261,23 @@ export default defineComponent({
         border-radius: 3px;
         box-shadow: white 6px 6px 0 -1px, black 6px 6px;
       }
+    }
+  }
+  .guidedfilter__progressbar {
+    @include container;
+    padding: 0;
+    margin-top: 40px;
+    height: 20px;
+    width: 34vw;
+    border: 1px solid black;
+    .guidedfilter__progressbar-inside {
+      color: white;
+      font-size: 13px;
+      text-align: center;
+      height: 18px;
+      width: 25%;
+      background: black;
+      border: 1px solid white;
     }
   }
   .guidedfilter__button {
