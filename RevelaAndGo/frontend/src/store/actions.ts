@@ -27,7 +27,7 @@ const actions = {
       const {data} = await axios.post(`${process.env.VUE_APP_API_URL}/service`, service)
       commit('saveLastServiceId',data._id);
     },
-    async addServiceToThisUserCart({commit}:ActionContext<State, State>, {services,cartId, serviceId}: { services:Array<string | number>;cartId: string; serviceId: string}){
+    async addServiceToThisUserCart({commit}:ActionContext<State, State>, {services,cartId, serviceId}: { services:Array<string | number>;cartId: string; serviceId: string}): Promise<void>{
       const newData = {services: [...services, serviceId]};
       const {data} = await axios.put(`${process.env.VUE_APP_API_URL}/cart/${cartId}`, newData)
       commit('updatedCart',data);
