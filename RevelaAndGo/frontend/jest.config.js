@@ -8,4 +8,5 @@ module.exports = {
     'src/**/*.{js,vue,ts}',
     '!src/main.js',
   ],
+  modulePathIgnorePatterns: ['src/main.ts', 'src/store/index.ts'],
 };
