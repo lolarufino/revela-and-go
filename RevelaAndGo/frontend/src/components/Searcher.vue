@@ -28,8 +28,12 @@ export default defineComponent({
   methods: {
     ...mapActions(["searchingLab"]),
     searchLab() {
-      this.searchingLab(this.inputValue);
-      this.$router.push("/searchlab");
+      if (this.inputValue !== "") {
+        this.searchingLab(this.inputValue);
+        this.$router.push("/searchlab");
+      } else {
+        this.$router.push("/");
+      }
     },
   },
   data() {
