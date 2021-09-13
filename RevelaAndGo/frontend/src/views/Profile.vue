@@ -1,14 +1,40 @@
 <template>
   <div class="profile">
     <div class="profile__image-container">
-      <button class="profile__edit-button">
+      <div class="modal" v-if="showModal">
+        <div class="modal__wrapper">
+          <div class="modal__container">
+            <button class="modal__button-close" @click="showModal = false">
+              X
+            </button>
+            <span class="modal__header">Elige tu nueva foto de perfil:</span>
+            <label for="file-upload" class="modal__input-button">
+              <input
+                id="file-upload"
+                type="file"
+                :name="uploadFieldName"
+                @change="onFileChange($event.target.name, $event.target.files)"
+              />
+              Seleccionar archivo...
+            </label>
+            <button class="modal__button" @click="showModal = false">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="profile__edit-button"
+        id="show-modal"
+        @click="showModal = true"
+      >
         <img
           class="profile__edit-image"
           src="https://i.ibb.co/55qGKN4/edit-button.png"
           alt="Edit button"
         />
       </button>
-      <img class="profile__image" :src="user.profilePicture" alt="User image" />
+      <img class="profile__image" :src="this.imageFile" alt="User image" />
     </div>
     <div class="profile__container">
       <div class="profile__data">
@@ -40,6 +66,20 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["fetchUserLoggedFromApi"]),
+    onFileChange(fieldName: string, file: string | any[]) {
+      let newImage = file[0];
+      if (file.length > 0) {
+        let imageURL = URL.createObjectURL(newImage);
+        this.imageFile = imageURL;
+      }
+    },
+  },
+  data() {
+    return {
+      showModal: false,
+      imageFile: "https://i.ibb.co/3pN6HCG/pexels-cottonbro-3585011.jpg",
+      uploadFieldName: "file",
+    };
   },
   mounted() {
     const route = useRoute();
@@ -58,16 +98,58 @@ export default defineComponent({
   align-items: center;
   width: 85%;
   margin-bottom: 20px;
+  position: relative;
   .profile__image-container {
     display: flex;
     flex-direction: column;
+    .modal {
+      position: fixed;
+      z-index: 9998;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: table;
+      .modal__wrapper {
+        display: table-cell;
+        vertical-align: middle;
+        .modal__container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          @include container;
+          width: 400px;
+          margin: 0px auto;
+          padding: 20px 30px;
+          background-color: #fff;
+          border-radius: 2px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+          font-family: $font;
+          .modal__input-button {
+            width: 250px;
+            @include button;
+            margin-top: 15px;
+          }
+          .modal__button {
+            width: 100px;
+            margin: 10px;
+            @include button;
+          }
+          .modal__button-close {
+            width: 27px;
+            @include button;
+            align-self: flex-end;
+            padding: 1px;
+            margin: 10px;
+          }
+        }
+      }
+    }
     .profile__edit-button {
       align-self: flex-end;
       border: none;
       cursor: pointer;
-      &:hover {
-        transform: scale(1.1, 1.1);
-      }
 
       .profile__edit-image {
         width: 30px;
@@ -131,5 +213,8 @@ export default defineComponent({
       width: 72vw;
     }
   }
+}
+input[type="file"] {
+  display: none;
 }
 </style>
