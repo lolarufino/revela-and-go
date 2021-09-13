@@ -16,7 +16,7 @@
         </router-link>
       </div>
     </div>
-    <div v-else>
+    <div v-else class="labslist__notmatch">
       <p class="labslist__notfound">
         No hay laboratorios que coincidan con tu búsqueda.
       </p>
@@ -63,6 +63,11 @@ export default defineComponent({
     @include container;
     width: 40vw;
     margin-top: 30px;
+  }
+  .labslist__notmatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
