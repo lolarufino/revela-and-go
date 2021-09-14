@@ -19,28 +19,33 @@ describe('Given a Searcher component', ()=> {
           
             expect(wrapper.html()).toContain('<div class="searcher">')
         })
-        test('Should render the searcher html tag', () => {
-          const methods = {
-            searchLab: jest.fn()
-          }
-          const wrapper = mount(Searcher, {
-              global: {
-                plugins: [router],
-                mocks: {
-                  $store: {
-                    state,
-                    methods: {
-                      searchLab: jest.fn()
-                    }
+
+      test('Should call searchingLab function', () => {
+        const wrapper = mount(Searcher, {
+            global: {
+              plugins: [router],
+              mocks: {
+                $store: {
+                  state,
+                  methods: {
+                    searchLab: jest.fn()
+                  },
+                  actions: {
+                    searchingLab: jest.fn()
                   },
                 },
+                data() {
+                  return{
+                    inputValue: "Test"
+                  }
+                }
               },
-            })
-            const searchLab = jest.fn();
-            searchLab();
-            const searcher = wrapper.get('[data-test="searcher"]')
-            searcher.trigger('click')
-          expect(searchLab).toHaveBeenCalled();
-      })
+            },
+          })
+          const searchingLab = jest.fn();
+          const searcher = wrapper.get('[data-test="searcher"]')
+          searcher.trigger('click')
+        expect(searchingLab).toHaveBeenCalled();
+    })
     })
 })

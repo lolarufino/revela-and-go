@@ -1,5 +1,10 @@
 <template>
-  <form class="register" action @submit.prevent="register">
+  <form
+    class="register"
+    action
+    @submit.prevent="register"
+    data-test="registerForm"
+  >
     <div class="register__email">
       <img
         class="register__icon__email"

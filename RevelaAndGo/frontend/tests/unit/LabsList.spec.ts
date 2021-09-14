@@ -30,9 +30,6 @@ describe('Given a LabsList component', () => {
             expect(foundlabs.text()).toBe('Estos son los laboratorios que corresponden a tu búsqueda:')
           })
           test('Should render a found labs text', () => {
-            const methods = {
-              updateServicePrice: jest.fn(),
-          }
               const wrapper = mount(LabsList,  {
                   global: {
                     plugins: [router, toast],

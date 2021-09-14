@@ -1,5 +1,5 @@
 <template>
-  <form class="login" action @submit.prevent="login">
+  <form class="login" action @submit.prevent="login" data-test="loginForm">
     <div class="login__email">
       <img
         class="login__icon__email"

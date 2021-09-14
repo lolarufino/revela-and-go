@@ -52,6 +52,8 @@ describe('Given a Cart component', () => {
             
               const updateFinalPrice = jest.fn();
               updateFinalPrice();
+              const addCart = wrapper.get('[data-test="addCart"]')
+              addCart.trigger('click')
             
               expect(updateFinalPrice).toHaveBeenCalled();
             })
