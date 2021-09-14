@@ -3,11 +3,10 @@ import actions from '../../src/store/actions';
 import {Commit} from 'vuex';
 import {UserFromApi, Service, Cart} from '../../src/types/interfaces';
 import {configActionContext} from '../test-utils';
-import state from '../mockedState';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
-const commit = jest.fn() as jest. MockedFunction<Commit>;
+const commit = jest.fn() as jest.MockedFunction<Commit>;
 
 describe('Given an action', ()=> {
     test('Should fetch labs from api', async () => {

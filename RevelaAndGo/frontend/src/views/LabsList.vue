@@ -25,9 +25,10 @@
           class="labslist__lab-addtocart"
           src="https://i.ibb.co/w0yS2Vy/add-to-basket.png"
           alt="Icon of add to cart"
+          data-test="addCart"
           @click="
-            $toast('Añadido al carrito'),
-              updateServicePrice(lab.baseRate, price)
+            updateServicePrice(lab.baseRate, price),
+              $toast('Añadido al carrito')
           "
         />
       </button>

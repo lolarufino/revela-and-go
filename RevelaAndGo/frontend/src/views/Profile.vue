@@ -13,6 +13,7 @@
                 id="file-upload"
                 type="file"
                 :name="uploadFieldName"
+                data-test="fileUpload"
                 @change="onFileChange($event.target.name, $event.target.files)"
               />
               Seleccionar archivo...

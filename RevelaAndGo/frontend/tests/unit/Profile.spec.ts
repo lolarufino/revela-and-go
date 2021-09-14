@@ -15,16 +15,27 @@ describe('Given a Profile component', () => {
                       actions: {
                         fetchUserLoggedFromApi: jest.fn(),
                       },
+                      methods: {
+                        onFileChange: jest.fn(),
+                      },
                       dispatch: jest.fn(),
                       commit: jest.fn(),
                     },
+                    data(){
+                      return{
+                        showModal: true,
+                      }
+                    }
                   },
                 },
             })
           
             const name = wrapper.get('[data-test="email"]')
-          
-            expect(name.text()).toBe('E-mail:')
+            expect(name.text()).toBe('E-mail:');
+            const onFileChange = jest.fn();
+            const file = wrapper.get('[data-test="fileUpload"]');
+            file.trigger('change');
+            expect(onFileChange).toHaveBeenCalled();
           })
     })
 })
