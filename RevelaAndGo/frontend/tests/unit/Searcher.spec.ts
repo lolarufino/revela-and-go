@@ -36,7 +36,7 @@ describe('Given a Searcher component', ()=> {
                 },
                 data() {
                   return{
-                    inputValue: "Test"
+                    inputValue: ""
                   }
                 }
               },

@@ -7,6 +7,13 @@ describe('Given a Profile component', () => {
     describe('When is rendered', () => {
         test('Should render a nombre text', () => {
             const wrapper = mount(Profile, {
+              data (){
+                return{
+                  showModal: true,
+                  imageFile: "https://i.ibb.co/3pN6HCG/pexels-cottonbro-3585011.jpg",
+                  uploadFieldName: "file",
+                }
+            },
                 global: {
                   plugins: [router],
                   mocks: {
@@ -21,19 +28,14 @@ describe('Given a Profile component', () => {
                       dispatch: jest.fn(),
                       commit: jest.fn(),
                     },
-                    data(){
-                      return{
-                        showModal: true,
-                      }
-                    }
                   },
                 },
             })
-          
-            const name = wrapper.get('[data-test="email"]')
+            console.log(wrapper.html());
+            const name = wrapper.get('[data-test="email"]');
             expect(name.text()).toBe('E-mail:');
             const onFileChange = jest.fn();
-            const file = wrapper.get('[data-test="fileUpload"]');
+            const file = wrapper.find('[data-test="fileUpload"]');
             file.trigger('change');
             expect(onFileChange).toHaveBeenCalled();
           })
