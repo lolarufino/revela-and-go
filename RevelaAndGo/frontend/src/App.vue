@@ -43,4 +43,15 @@ export default defineComponent({
 .fade-leave-to {
   opacity: 0;
 }
+
+::-webkit-scrollbar {
+  width: 13px;
+}
+::-webkit-scrollbar-track {
+  border: 1px solid black;
+  background-color: #ffff;
+}
+::-webkit-scrollbar-thumb {
+  background: black;
+}
 </style>
