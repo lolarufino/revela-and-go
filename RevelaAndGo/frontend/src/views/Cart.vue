@@ -44,7 +44,7 @@
           <span class="cart__info-price">{{ service.price }}€</span>
         </section>
       </div>
-      <p class="cart__total">
+      <p class="cart__total" data-test="addCart">
         Total: {{ updateFinalPrice(user.cart.services) }}€
       </p>
       <button
