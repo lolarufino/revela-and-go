@@ -45,7 +45,6 @@
 import { defineComponent } from "vue";
 import { mapMutations } from "vuex";
 import auth from "../auth/auth";
-
 export default defineComponent({
   name: "Login",
   methods: {

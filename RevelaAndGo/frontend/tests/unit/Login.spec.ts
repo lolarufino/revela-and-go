@@ -28,6 +28,13 @@ describe('Given a Login component', () => {
             const loginUser = jest.fn()
           
             const wrapper = mount(Login,  {
+              data() {
+                return{
+                  email: "",
+                  password: "",
+                  error: false
+                }
+              },
                 global: {
                   plugins: [router],
                   mocks: {
@@ -45,13 +52,6 @@ describe('Given a Login component', () => {
                       dispatch: jest.fn(),
                       commit: jest.fn(),
                     },
-                    data() {
-                      return{
-                        email: "",
-                        password: "",
-                        error: false
-                      }
-                    }
                   },
                 },
             })
@@ -62,4 +62,3 @@ describe('Given a Login component', () => {
           })
     })
 })
-
