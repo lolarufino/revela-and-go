@@ -4,4 +4,4 @@ This is a project.
 
 ## Technologies
 
-<img src="https://c.tenor.com/P2xTUyOe3FMAAAAC/abrazo-gato.gif" alt="Revela and go" />
+<img src="https://i.ibb.co/LPnL9Pn/revelaandgogifcompressed.gif" alt="Revela and go" />
