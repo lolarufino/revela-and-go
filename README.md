@@ -2,6 +2,8 @@
 
 This is a project.
 
-## Technologies
+## Preview
 
 <img src="https://i.ibb.co/LPnL9Pn/revelaandgogifcompressed.gif" alt="Revela and go" />
+
+## Technologies used
