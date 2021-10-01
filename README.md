@@ -4,4 +4,4 @@ This is a project.
 
 ## Technologies
 
-![enter image description here](https://i.ibb.co/Xp4PHJg/revelaandgogif.gif)
+<img src="https://i.ibb.co/jMgys6q/revelaandgogiffirst.gif" alt="Revela and go" />
