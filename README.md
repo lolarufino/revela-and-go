@@ -19,3 +19,11 @@ Personal project of a website where you can, given a filter, check in wich film 
 ## Preview
 
 <img src="https://i.ibb.co/LPnL9Pn/revelaandgogifcompressed.gif" alt="Revela and go" />
+
+## Project setup
+
+npm install
+
+## Compiles and hot-reloads for development
+
+npm run serve
