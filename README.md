@@ -18,6 +18,8 @@ Personal project of a website where you can, given a filter, check in wich film 
 
 ## Preview
 
+[Link to deployment](https://revela-and-go.vercel.app/)
+
 <img src="https://i.ibb.co/LPnL9Pn/revelaandgogifcompressed.gif" alt="Revela and go" />
 
 ## Project setup
